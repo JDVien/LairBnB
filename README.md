@@ -23,7 +23,7 @@ The application is made with a REACT/REDUX template engine and backed by a Postg
 * Search for spots
 * Filter through content via user profile
 
-![LairBnB Main Page](/frontend/public/images/lairbnb_glance.png)
+![LairBnB Main Page](/frontend/public/images/lairbnb_glance_v001.png)
 
 ## Technologies Used
 * Frontend
