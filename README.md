@@ -1,7 +1,7 @@
 # LairBnB
 *By [Jason Vien](https://github.com/JDVien) - [Live site](https://lairbnb--app.herokuapp.com/)*
 
-An online marketplace app for villainous lodging -- primarily remote island sovereignties, sub-orbital bungalows, scenic volcanic cores for vacation rentals and world domination activities.
+An online marketplace app for villainous lodging -- primarily remote island sovereignties, sub-orbital bungalows, scenic volcanic cores, creepy swamp cabins for vacation rentals and world domination activities.
 
 
 **Table of Contents**
@@ -13,7 +13,7 @@ An online marketplace app for villainous lodging -- primarily remote island sove
   * [Conclusion](#conclusion)
 
 ## LairBnB at a Glance
-LairBnB is a full stack application for misunderstood masterminds to getaway and relax...wip wip wip
+LairBnB is a full stack application for fledgling misunderstood malcontents to getaway and relax...wip wip wip
 
 The application is made with a REACT/REDUX template engine and backed by a Postgres database.
 
