@@ -23,7 +23,7 @@ The application is made with a REACT/REDUX template engine and backed by a Postg
 * Search for spots
 * Filter through content via user profile
 
-![LairBnB Main Page](/public/images/lairbnb_glance.png)
+![LairBnB Main Page](/frontend/public/images/lairbnb_glance.png)
 
 ## Technologies Used
 * Frontend
@@ -41,7 +41,7 @@ The frontend is a Javascript, React app deployed to its own Heroku server.
 
 ##### Overview of application architecture
 
-![Database schema](/public/images/dbv001.png)
+![Database schema](/frontend/public/images/dbv001.png)
 ##### LairBnB Postgres database schema
 
 ## Frontend Overview
