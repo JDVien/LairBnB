@@ -1,7 +1,7 @@
 # LairBnB
 *By [Jason Vien](https://github.com/JDVien) - [Live site](https://lairbnb--app.herokuapp.com/)*
 
-An online marketplace app for villainous lodging, primarily dungeons or volcanic cores for vacation rentals, and world domination activities.
+An online marketplace app for villainous lodging -- primarily remote island sovereignties, sub-orbital bungalows, scenic volcanic cores for vacation rentals and world domination activities.
 
 
 **Table of Contents**
