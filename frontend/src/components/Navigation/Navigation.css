@@ -3,3 +3,42 @@ body {
   color:brown;
   background-color:aliceblue;
 }
+.nav-container {
+  display: inline-flex;
+  justify-content: space-around;
+}
+.nav-item {
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 20px;
+}
+
+.search_form {
+  display: flex;
+}
+
+.home_nav_searchbar_div {
+  border-radius: 20px;
+  width: 400px;
+
+}
+
+.searchbar {
+  border-radius: 10px;
+  width: 400px;
+  height: 3em;
+  background-color: whitesmoke;
+  opacity: 90%;
+
+}
+
+.lairbnb_search_black_orange {
+  width: 2rem;
+
+}
+
+.search_logo_button_lairbnb {
+  background-color: black;
+  border-radius: 5px;
+  margin-left: 5px;
+}

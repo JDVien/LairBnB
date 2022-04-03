@@ -18,18 +18,27 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup" className='nav-item'>Sign Up</NavLink>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <div>
+      <h1>LairBnB</h1>
+      <div className='nav-container'>
+      <NavLink exact to="/" className='nav-item'>Home</NavLink>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+        <div className='home_nav_searchbar_container'>
+          <form className='search_form'>
+            <input className='searchbar' type='search' />
+            <button className='search_logo_button_lairbnb' >
+              <img className='lairbnb_search_black_orange' src={require('../../assets/images/Airbnb_Logo_button.png')} alt='lairbnb_logo' />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
