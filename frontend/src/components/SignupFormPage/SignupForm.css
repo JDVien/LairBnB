@@ -1,5 +1,4 @@
-body {
-  font-weight: bold;
-  color:brown;
-  background-color:aliceblue;
+.signup_item {
+  color: white;
+  /* background-color:rgb(68, 123, 172); */
 }

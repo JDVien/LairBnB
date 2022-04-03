@@ -24,9 +24,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div>
-      <h1>LairBnB</h1>
-      <div className='nav-container'>
+    <div className='top_nav_div'>
       <NavLink exact to="/" className='nav-item'>Home</NavLink>
         {isLoaded && sessionLinks}
         <div className='home_nav_searchbar_container'>
@@ -36,8 +34,8 @@ function Navigation({ isLoaded }){
               <img className='lairbnb_search_black_orange' src={require('../../assets/images/Airbnb_Logo_button.png')} alt='lairbnb_logo' />
             </button>
           </form>
+          <img className='lairbnb_logo_black_orange_home' src={require('../../assets/images/text-1649000244645.png')} alt='lairbnb_logo_home' />
         </div>
-      </div>
     </div>
   );
 }

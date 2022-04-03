@@ -1,7 +1,22 @@
 body {
   font-weight: bold;
-  color:brown;
-  background-color:aliceblue;
+  color:rgb(197, 48, 48);
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+#modal-content {
+  background: none;
+  opacity: 100%;
+}
 
+/* .login_form {
+
+} */
+
+label {
+  opacity: 80%;
+}
