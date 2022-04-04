@@ -2,6 +2,10 @@ body {
   background-color: black;
 }
 
+.landing_image_body {
+  height: 35em;
+}
+
 .landing_image_bg {
   background-image: url("https://seattlerefined.com/resources/media/05b9d5de-4f6f-4f13-aa4a-67e709981102-large16x9_a.JPG?1575572677165");
   background-size:cover;
@@ -36,4 +40,14 @@ h2 {
 
 .random_spot_brave_bttn:hover {
   background-color: rgb(243, 225, 225);
+}
+
+.home_card_body {
+  background-color: white;
+  background-size: cover;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+
 }

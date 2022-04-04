@@ -37,15 +37,18 @@ body {
 }
 
 .searchbar {
-  border-radius: 10px;
+  border-radius: 999px;
+  border:none;
   width: 400px;
   height: 3em;
+  padding: 10px;
+  outline-width: 0;
   background-color: rgb(255, 255, 255);
-  opacity: 90%;
+  opacity: 100%;
 }
 
 .searchbar:hover {
-  opacity: 100%;
+  opacity: 90%;
 }
 
 .lairbnb_search_black_orange {
