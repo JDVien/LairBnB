@@ -1,8 +1,4 @@
-/* Search > body {
-  background-color: white;
-} */
-
-.search_page {
+.details__body {
   background-color: white;
   height: 600px;
   margin-left: 100px;
