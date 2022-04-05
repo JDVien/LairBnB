@@ -1,0 +1,22 @@
+.spots {
+  background-color: white;
+  overflow-x: hidden;
+}
+
+.spots_card_body {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 100px;
+  max-width: 1500px;
+}
+
+/* .home_card_body {
+  background-color: white;
+  background-size: cover;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+
+} */

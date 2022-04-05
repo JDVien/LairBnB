@@ -5,14 +5,17 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
-import Search from "./components/Search/Search";
-import Spot from "./components/Spot/Spot";
+// import Search from "./components/Search/Search";
+import Spots from './components/Spot/Spot';
+import { getAllSpots } from './store/spot';
+import CreateSpot from './components/Spot/CreateSpot';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(getAllSpots());
   }, [dispatch]);
 
   return (
@@ -26,12 +29,13 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/search'>
-            <Search />
+          <Route path="/create">
+            <CreateSpot />
           </Route>
-          <Route path='/spot'>
-            <Spot />
+          <Route path="/spots">
+            <Spots />
           </Route>
+
         </Switch>
       )}
     </>
@@ -39,3 +43,12 @@ function App() {
 }
 
 export default App;
+{/* <SpotDetail
+// image={image}
+name={name}
+address={address}
+city={city}
+state={state}
+country={country}
+price={price}
+/> */}

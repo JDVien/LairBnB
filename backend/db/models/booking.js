@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       references: { model: "Users" },
       allowNull: false,
-      type: Datatypes.INTEGER
+      type: DataTypes.INTEGER
     },
     startDate: {
       allowNull: false,
@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Booking.associate = function(models) {
-    Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
-    Booking.belongsTo(models.User, {foreignKey: "userId"});
+    // Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
+    // Booking.belongsTo(models.User, {foreignKey: "userId"});
   };
   return Booking;
 };

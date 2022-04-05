@@ -23,7 +23,7 @@ const validateLogin = [
 ];
 
 // LOG IN - now connected to validateLogin:
-router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
+router.post('/spots', validateLogin, asyncHandler(async (req, res, next) => {
   const { credential, password } = req.body;
 
   const user = await User.login({ credential, password });

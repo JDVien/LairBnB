@@ -12,7 +12,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      <>
+        <NavLink to='/create'>Create a Spot</NavLink>
       <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
@@ -24,8 +27,9 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div className='top_nav_div'>
+    <nav className='top_nav_div'>
       <NavLink exact to="/" className='nav-item'>Home</NavLink>
+      <NavLink to='/spots'>Spots</NavLink>
         {isLoaded && sessionLinks}
         <div className='home_nav_searchbar_container'>
           <form className='search_form'>
@@ -36,7 +40,7 @@ function Navigation({ isLoaded }){
           </form>
           <img className='lairbnb_logo_black_orange_home' src={require('../../assets/images/text-1649000244645.png')} alt='lairbnb_logo_home' />
         </div>
-    </div>
+    </nav>
   );
 }
 

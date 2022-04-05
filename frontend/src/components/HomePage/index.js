@@ -42,6 +42,7 @@ function HomePage() {
             description="Private homes, with emphasis on private"
       />
     </div>
+    
     </div>
   )
 }

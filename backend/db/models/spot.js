@@ -5,36 +5,36 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: true,
       references: { model: "Users"},
       allowNull: false,
-      type: Datatypes.UUID
+      type: DataTypes.INTEGER
     },
     address: {
       allowNull: false,
       type: DataTypes.STRING(255),
     },
     city: {
-      allowNull: fals,
+      allowNull: false,
       type: DataTypes.STRING(255),
-    }
+    },
     state: {
-      allowNull: fals,
+      allowNull: false,
       type: DataTypes.STRING(255),
-    }
+    },
     country: {
-      allowNull: fals,
+      allowNull: false,
       type: DataTypes.STRING(255),
-    }
+    },
     name: {
-      allowNull: fals,
+      allowNull: false,
       type: DataTypes.STRING(255),
-    }
+    },
     price: {
-      allowNull: fals,
+      allowNull: false,
       type: DataTypes.DECIMAL(3,2),
     }
   }, {});
   Spot.associate = function(models) {
-    Spot.hasOne(models.User, {foreignKey: "userId"})
-    Spot.hasMany(models.Image, {foreignKey: "spotId"})
+    Spot.belongsTo(models.User, {foreignKey: "userId"})
+    // Spot.hasMany(models.Image, {foreignKey: "spotId"})
   };
   return Spot;
 };

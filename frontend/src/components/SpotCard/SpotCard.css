@@ -1,0 +1,26 @@
+.spot_card {
+  margin: 10px;
+  border: 0px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+
+  transition:  transform 100ms ease-in;
+  cursor: pointer;
+  max-width: 350px;
+}
+
+.spot_card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 18px -9px rgba(2, 2, 2, 0.75);
+}
+
+.spot_card > img {
+  object-fit: fill;
+  min-width: 300px;
+  min-height: 200px;
+  width: 100%;
+}
+
+.card_content > h2 {
+  color: black;
+}

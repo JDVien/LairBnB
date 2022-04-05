@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addSpot } from '../../store/products';
+import { addSpot } from '../../../store/spot';
 
-const CreateSpot = () => {
+const SpotDetail = () => {
   // const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -75,4 +75,4 @@ const CreateSpot = () => {
     </div>
   );
 };
-export default CreateSpot;
+export default SpotDetail;
