@@ -10,7 +10,7 @@ module.exports = {
         state: "Ohio",
         country: "United States",
         name: "The Nightmre on Elm Street House",
-        price: '700',
+        price: 700,
         userId: '1',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -21,7 +21,7 @@ module.exports = {
         state: "New Jersey",
         country: "United States",
         name: "Jason's Shack",
-        price: '400',
+        price: 400,
         userId: '2',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -32,7 +32,7 @@ module.exports = {
         state: "Nevada",
         country: "United States",
         name: "Evil's Secret Underground Base",
-        price: '100000',
+        price: 100000,
         userId: '3',
         createdAt: new Date(),
         updatedAt: new Date()
