@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-function Card({src, title, description, price}) {
+function Card({src, name, address, city, state, title, description, price}) {
   return (
     <div className='card'>
       <img src={src} alt="" />
@@ -9,7 +9,11 @@ function Card({src, title, description, price}) {
           <h2>{title}</h2>
           <h4>{description}</h4>
           <h3>{price}</h3>
+          <h3>{address}</h3>
       </div>
+      {/* <div className="more_detail">
+        <h2>{price} dadsfdsfdsfdsf</h2>
+      </div> */}
     </div>
   )
 }

@@ -53,11 +53,11 @@ router.get(
 
 
 router.get(
-  '/:id(\\d+)',
+  '/:id',
   asyncHandler(async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.id);
     if (spot) {
-      return res.json({ spot });
+      return res.json( { spot } );
     } else {
       next(spotNotFoundError(req.params.id));
     }
@@ -82,36 +82,36 @@ router.post(
   })
 );
 
-// router.put(
-//   '/:id(\\d+)',
-//   validateSpot,
-//   asyncHandler(async (req, res, next) => {
-//     const spot = await Spot.findByPk(req.params.id);
+router.put(
+  '/:id(\\d+)',
+  validateSpot,
+  asyncHandler(async (req, res) => {
+    const spot = await Spot.findByPk(req.params.id);
 
-//     if (spot) {
-//       // spot.image = req.body.image || spot.image;
-//       spot.name = req.body.name || spot.name;
-//       spot.address = req.body.address || spot.address;
-//       spot.city = req.body.city || spot.city;
-//       spot.state = req.body.state || spot.state;
-//       spot.country = req.body.country || spot.country;
-//       spot.price = req.body.price || spot.price;
+    if (spot) {
+      // spot.image = req.body.image || spot.image;
+      spot.name = req.body.name || spot.name;
+      spot.address = req.body.address || spot.address;
+      spot.city = req.body.city || spot.city;
+      spot.state = req.body.state || spot.state;
+      spot.country = req.body.country || spot.country;
+      spot.price = req.body.price || spot.price;
 
-//       await spot.save();
-//       res.json({ spot });
-//     } else {
-//       next(spotNotFoundError(req.params.id));
-//     }
-//   })
-// );
+      await spot.save();
+      res.json({ spot });
+    // } else {
+    //   next(spotNotFoundError(req.params.id));
+    }
+  })
+);
 
-// router.delete('/:id(\\d+)', async (req, res, next) => {
-//   const spot = await Spot.findByPk(req.params.id);
-//   if (spot) {
-//     await spot.destroy();
-//     res.status(204).end();
-//   } else {
-//     next(spotNotFoundError(req.params.id));
-//   }
-// });
+router.delete('/:id(\\d+)', async (req, res, next) => {
+  const spot = await Spot.findByPk(req.params.id);
+  if (spot) {
+    await spot.destroy();
+    res.status(204).end();
+  } else {
+    next(spotNotFoundError(req.params.id));
+  }
+});
 module.exports = router;

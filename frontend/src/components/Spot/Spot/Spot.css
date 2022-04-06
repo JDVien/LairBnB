@@ -4,6 +4,7 @@
 }
 
 .spots_card_body {
+  background-color: white;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './SpotCard.css';
 
+
 function SpotCard({ src, name, city, state, price}) {
   return (
     <div className='spot_card'>

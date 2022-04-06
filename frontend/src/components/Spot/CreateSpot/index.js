@@ -14,13 +14,13 @@ const CreateSpot = () => {
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const spot = {
-      // image,
       name,
       address,
       city,
@@ -37,45 +37,45 @@ const CreateSpot = () => {
 
   return (
     <div className='add-spot'>
-      <h3>Add A Spot</h3>
+      <h3>Host a Spot!</h3>
       <form onSubmit={handleSubmit} className='add-spot'>
-        {/* <input
+        <input
           onChange={(e) => setImage(e.target.value)}
           value={image}
           placeholder='Image Url'
-        /> */}
+        />
         <input
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder='Spot Name'
+          placeholder='Name your spot'
         />
           <input
           onChange={(e) => setAddress(e.target.value)}
           value={address}
-          placeholder='Spot Address'
+          placeholder='Address'
         />
         <input
           onChange={(e) => setCity(e.target.value)}
           value={city}
-          placeholder='Spot City'
+          placeholder='City'
         />
         <input
           onChange={(e) => setState(e.target.value)}
           value={state}
-          placeholder='Spot State'
+          placeholder='State'
         />
         <input
           onChange={(e) => setCountry(e.target.value)}
           value={country}
-          placeholder='Spot Country'
+          placeholder='Country'
         />
         <input
           onChange={(e) => setPrice(e.target.value)}
           value={price}
-          placeholder='Price'
+          placeholder='Price Per Night'
         />
         <button className='submit-button' type='submit'>
-          Add Spot
+          Host a Spot!
         </button>
       </form>
     </div>
