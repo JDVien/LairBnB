@@ -83,7 +83,7 @@ router.post(
 );
 
 router.put(
-  '/:id(\\d+)',
+  '/:id/edit',
   validateSpot,
   asyncHandler(async (req, res) => {
     const spot = await Spot.findByPk(req.params.id);

@@ -8,11 +8,19 @@ body {
   justify-content: space-evenly;
   margin: 10px;
   position: static;
+
+}
+
+.nav-item+button {
+  border: none;
+  border-radius: 999px;
+
 }
 
 .nav-item {
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
   text-decoration: none;
   color: rgb(209, 78, 78);
 }

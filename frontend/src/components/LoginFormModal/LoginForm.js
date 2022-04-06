@@ -11,10 +11,6 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  // this is no longer needed if using a modal:
-  // if (sessionUser) return (
-  //   <Redirect to="/" />
-  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +25,7 @@ function LoginForm() {
   return (
     <form className='login_form' onSubmit={handleSubmit}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
       <label>
         Username or Email

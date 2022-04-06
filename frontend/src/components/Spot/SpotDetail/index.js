@@ -2,29 +2,25 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { deleteSpot } from '../../../store/spot';
-// import { getAllSpots } from '../../../store/spot';
-// import { getSpot } from '../../../store/spot';
-// import { Modal } from '../../../context/Modal';
 // import EditSpot from '../../EditSpot/EditSpot';
 import EditFormModal from '../../EditSpot/EditFormModal';
 import './SpotDetail.css';
 
 const SpotDetail = ( { id, name, address, city, state, country, price, userId }) => {
+
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const { spotId } = useParams();
-  // spots = { id, name, address, city, state, country, price}
   const spot = useSelector(state => state.spots[spotId])
   const history = useHistory();
-  console.log('==============================++++++++++++++++++++++')
-  console.log(spot)
+  const spots = { id, name, address, city, state, country, price, userId }
   // useEffect(() => {
   //   dispatch(getSpot(spotId));
   // }, [dispatch, spotId]);
 
   const handleDelete = (spotId) => {
     dispatch(deleteSpot(spotId));
-    history.push('/')
+    history.push('/spots')
   };
 
   if (!spot) return null;
@@ -55,14 +51,14 @@ const SpotDetail = ( { id, name, address, city, state, country, price, userId })
       {/* <img src={image} alt={name} /> */}
       {/* {spots.map((spot) => ( */}
         {content}
-        { sessionUser && sessionUser?.id === spot?.userId &&
+        { sessionUser && sessionUser.id === spot.userId &&
         <div className='button-row'>
           <button onClick={() => handleDelete(spotId)} className='delete-button'>
             Delete {console.log('000000000000000000000000000000000000')}
           </button>
           {/* <button className='update-button'>Update</button> */}
             <EditFormModal user={{...sessionUser}}
-              spot={{ id, name, address, city, state, country, price, userId }} />
+              spot={spot} />
               {console.log(spot)}
         </div>
         }

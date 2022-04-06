@@ -1,0 +1,5 @@
+.update_spot_form {
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+}

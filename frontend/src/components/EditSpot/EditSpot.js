@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 // import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { editSpot } from '../../store/spot';
@@ -7,6 +8,7 @@ import './EditSpot.css';
 
 function EditSpot({ hideModal, spot, user }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [name, setName] = useState(spot?.name);
     const [address, setAddress] = useState(spot?.address);
     const [city, setCity] = useState(spot?.city);
@@ -16,16 +18,17 @@ function EditSpot({ hideModal, spot, user }) {
     // const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
 
+
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log('====================================>>>>>>>>>>>>>>>>>>>>>>>>')
-      console.log(spot)
       if (name && address && price) {
         setErrors([]);
-        await dispatch(editSpot({ name, address, city, state, country, price, userId: user.id, id: spot.id }))
+        await dispatch(editSpot({ id: spot.id , name, address, city, state, country, price, userId: user.id }))
+        history.push('/spots');
         hideModal();
-      } else {
-        return setErrors(['Make sure all fields are filled.'])
+
+      // } else {
+      //   return setErrors(['Make sure all fields are filled.'])
       }
     };
 
@@ -91,6 +94,7 @@ function EditSpot({ hideModal, spot, user }) {
             required
           />
         </label>
+
         <button type="submit">Update Spot</button>
       </form>
     );

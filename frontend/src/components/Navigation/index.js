@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink to='/create'>Create a Spot</NavLink>
+        <NavLink className='nav-item' to='/create'>   Create a Spot</NavLink>
       <ProfileButton user={sessionUser} />
       </>
     );
@@ -29,7 +29,7 @@ function Navigation({ isLoaded }){
   return (
     <nav className='top_nav_div'>
       <NavLink exact to="/" className='nav-item'>Home</NavLink>
-      <NavLink to='/spots'>Spots</NavLink>
+      <NavLink className='nav-item' to='/spots'>Spots</NavLink>
         {isLoaded && sessionLinks}
         <div className='home_nav_searchbar_container'>
           <form className='search_form'>

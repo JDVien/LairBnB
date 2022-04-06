@@ -68,7 +68,7 @@ export const addSpot = (spot) => async (dispatch) => {
 // };
 
 export const editSpot = (payload) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${payload.id}`, {
+  const response = await csrfFetch(`/api/spots/${payload.id}/edit`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export const editSpot = (payload) => async (dispatch) => {
 }
 
 export const deleteSpot = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/${id}`, {
+  const response = await csrfFetch(`/api/spots/${id}`, {
     method: 'DELETE'
   });
 
@@ -106,7 +106,7 @@ const spotReducer = (state = {}, action) => {
       newState.spot = action.payload;
       return newState;
     case UPDATE_SPOT:
-      newState = {...state}
+      newState = Object.assign({}, state);
       newState[action.payload.id] = action.payload;
       return newState;
     case REMOVE_ONE_SPOT:

@@ -31,7 +31,7 @@ const CreateSpot = () => {
     };
     let newSpot = await dispatch(addSpot(spot));
     if (newSpot) {
-      history.push('/');
+      history.push('/spots');
     }
   };
 
