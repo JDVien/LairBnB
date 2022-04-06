@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditForm from './index';
-import SpotDetail from '../Spot/SpotDetail'
+// import SpotDetail from '../Spot/SpotDetail'
 // import { NavLink } from 'react-router-dom';
 
 function EditFormModal({ user, spot }) {

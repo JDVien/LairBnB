@@ -11,7 +11,7 @@ import { getAllSpots } from './store/spot';
 import { getSpot } from './store/spot';
 import CreateSpot from './components/Spot/CreateSpot';
 import SpotDetail from './components/Spot/SpotDetail';
-import DetailPage from './components/DetailPage/DetailPage'
+// import DetailPage from './components/DetailPage/DetailPage'
 import EditForm from './components/EditSpot/index';
 
 function App() {

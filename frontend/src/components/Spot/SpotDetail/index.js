@@ -13,7 +13,7 @@ const SpotDetail = ( { id, name, address, city, state, country, price, userId })
   const { spotId } = useParams();
   const spot = useSelector(state => state.spots[spotId])
   const history = useHistory();
-  const spots = { id, name, address, city, state, country, price, userId }
+  // const spots = { id, name, address, city, state, country, price, userId }
   // useEffect(() => {
   //   dispatch(getSpot(spotId));
   // }, [dispatch, spotId]);

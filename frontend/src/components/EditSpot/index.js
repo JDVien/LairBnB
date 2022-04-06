@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editSpot } from "../../store/spot";
-import { EditFormModal } from './EditFormModal'
+// import { EditFormModal } from './EditFormModal'
 import './EditSpot.css';
 
 const EditForm = ({ spot, hideModal }) => {
