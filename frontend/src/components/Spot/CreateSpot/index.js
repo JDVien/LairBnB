@@ -39,11 +39,11 @@ const CreateSpot = () => {
     <div className='add-spot'>
       <h3>Host a Spot!</h3>
       <form onSubmit={handleSubmit} className='add-spot'>
-        <input
+        {/* <input
           onChange={(e) => setImage(e.target.value)}
           value={image}
           placeholder='Image Url'
-        />
+        /> */}
         <input
           onChange={(e) => setName(e.target.value)}
           value={name}
