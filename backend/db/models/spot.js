@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       allowNull: false,
-      type: DataTypes.DECIMAL(3,2),
+      type: DataTypes.INTEGER,
     }
   }, {});
   Spot.associate = function(models) {
