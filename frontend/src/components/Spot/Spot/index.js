@@ -26,6 +26,7 @@ const Spots = () => {
           <NavLink to={`/${spot?.id}`} >
              <SpotCard src='https://seattlerefined.com/resources/media/05b9d5de-4f6f-4f13-aa4a-67e709981102-large16x9_a.JPG?1575572677165'
                  className="spot" key={spot?.id}
+                 name={spot?.name}
                  city={spot?.city}
                  state={spot?.state}
                 price={spot?.price}
