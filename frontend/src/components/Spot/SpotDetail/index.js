@@ -21,6 +21,7 @@ const SpotDetail = ( { id, name, address, city, state, country, price, userId })
   const handleDelete = (spotId) => {
     dispatch(deleteSpot(spotId));
     history.push('/spots')
+    window.location.reload()
   };
 
   if (!spot) return null;
