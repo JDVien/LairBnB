@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditForm from './index';
+import './EditSpot.css'
 // import SpotDetail from '../Spot/SpotDetail'
 // import { NavLink } from 'react-router-dom';
 
@@ -10,7 +11,7 @@ function EditFormModal({ user, spot }) {
   return (
     <>
       {/* <NavLink to='/spots' onClick={() => setShowModal(true)} className='edit_bttn nav-item'>Update</NavLink> */}
-      <button onClick={() => setShowModal(true)}>Update Spot</button>
+      <button className='update_button' onClick={() => setShowModal(true)}>Update Spot</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditForm spot={spot} hideModal={() => setShowModal(false)} />

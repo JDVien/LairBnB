@@ -31,9 +31,6 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
           <Route path="/create">
             <CreateSpot />
           </Route>
@@ -46,7 +43,6 @@ function App() {
           <Route path="/:id/edit">
             <EditForm />
           </Route>
-
         </Switch>
       )}
     </>

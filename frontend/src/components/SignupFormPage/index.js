@@ -13,9 +13,9 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return (
-    <Redirect to="/" />
-  );
+  // if (sessionUser) return (
+  //   <Redirect to="/" />
+  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +31,11 @@ function SignupFormPage() {
   };
 
   return (
+    <>
+    <div className='signup_body'>
+    <div className='signup_form_window'>
     <form className='signup_form_container' onSubmit={handleSubmit}>
+      Signup
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
@@ -41,6 +45,7 @@ function SignupFormPage() {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
           required
         />
       </label>
@@ -50,6 +55,7 @@ function SignupFormPage() {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder='Username'
           required
         />
         </label >
@@ -59,6 +65,7 @@ function SignupFormPage() {
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
           </label>
@@ -68,11 +75,15 @@ function SignupFormPage() {
               type="text"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder='Confirm Password'
               required
             />
             </label>
-            <button type="submit">Sign Up</button>
+            <button className='signup_bttn' type="submit">Sign Up</button>
         </form>
+        </div>
+        </div>
+        </>
   );
 }
 

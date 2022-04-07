@@ -54,7 +54,7 @@ const SpotDetail = ( { id, name, address, city, state, country, price, userId })
         { sessionUser && sessionUser.id === spot.userId &&
         <div className='button-row'>
           <button onClick={() => handleDelete(spotId)} className='delete-button'>
-            Delete {console.log('000000000000000000000000000000000000')}
+            Delete Spot
           </button>
           {/* <button className='update-button'>Update</button> */}
             <EditFormModal user={{...sessionUser}}

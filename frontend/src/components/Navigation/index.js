@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignUpFormModal from '../SignupFormPage/SignUpFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -14,14 +15,18 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <NavLink className='nav-item' to='/create'>   Create a Spot</NavLink>
-      <ProfileButton user={sessionUser} />
+        <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
       <>
+      {/* <div className='sessionBtns'> */}
+        <SignUpFormModal />
         <LoginFormModal />
-        <NavLink to="/signup" className='nav-item'>Sign Up</NavLink>
+      {/* </div> */}
+
+        {/* <NavLink to="/signup" className='nav-item'>Sign Up</NavLink> */}
       </>
     );
   }

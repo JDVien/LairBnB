@@ -53,7 +53,7 @@ router.get(
 
 
 router.get(
-  '/:id',
+  '/spots/:id',
   asyncHandler(async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.id);
     if (spot) {
