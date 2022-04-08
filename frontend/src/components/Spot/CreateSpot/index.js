@@ -49,6 +49,7 @@ const CreateSpot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
+    
     const spot = {
       name,
       address,

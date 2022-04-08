@@ -18,11 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     endDate: {
       allowNull: false,
       type: DataTypes.DATE
+    },
+    totalCost: {
+      allowNull: false,
+      type: DataTypes.INTEGER
     }
   }, {});
   Booking.associate = function(models) {
-    // Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
-    // Booking.belongsTo(models.User, {foreignKey: "userId"});
+    Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
+    Booking.belongsTo(models.User, {foreignKey: "userId"});
   };
   return Booking;
 };

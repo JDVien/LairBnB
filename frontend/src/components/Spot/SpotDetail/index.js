@@ -2,12 +2,13 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { deleteSpot } from '../../../store/spot';
-// import EditSpot from '../../EditSpot/EditSpot';
+import { useState } from 'react';
 import EditFormModal from '../../EditSpot/EditFormModal';
+import BookingCost from '../../Booking/bookingCost'
 import './SpotDetail.css';
 
 const SpotDetail = ( { id, name, address, city, state, country, price, userId }) => {
-
+  const [showSearch, setShowSearch] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const { spotId } = useParams();
@@ -57,11 +58,17 @@ const SpotDetail = ( { id, name, address, city, state, country, price, userId })
           <button onClick={() => handleDelete(spotId)} className='delete-button'>
             Delete Spot
           </button>
-          {/* <button className='update-button'>Update</button> */}
             <EditFormModal user={{...sessionUser}}
               spot={spot} />
               {console.log(spot)}
         </div>
+        }
+        { sessionUser && sessionUser.id !== spot.userId &&
+                <div className='book_date'>
+                <div className='book_date_search'>
+                <BookingCost user={{...sessionUser}} spot={spot}/>
+                </div>
+                </div>
         }
     </div>
   );

@@ -10,6 +10,7 @@ import Spots from './components/Spot/Spot';
 import { getAllSpots } from './store/spot';
 import { getSpot } from './store/spot';
 import CreateSpot from './components/Spot/CreateSpot';
+import BookingCost from './components/Booking/bookingCost'
 import SpotDetail from './components/Spot/SpotDetail';
 // import DetailPage from './components/DetailPage/DetailPage'
 import EditForm from './components/EditSpot/index';
@@ -20,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(getAllSpots());
-    dispatch(getSpot());
+    // dispatch(getSpot());
   }, [dispatch]);
 
   return (
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/:id/edit">
             <EditForm />
+          </Route>
+          <Route path="/bookings/create">
+            <BookingCost />
           </Route>
         </Switch>
       )}

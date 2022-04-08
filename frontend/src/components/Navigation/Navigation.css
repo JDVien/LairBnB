@@ -3,11 +3,14 @@ body {
   background-color: rgb(212, 209, 209);
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.top-nav-div {
-  display: inline-flex;
-  justify-content: space-evenly;
-  margin: 10px;
-  position: static;
+.top_nav_div {
+  background-color: black;
+  height: 3em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 
 }
 
@@ -25,12 +28,19 @@ body {
   color: rgb(209, 78, 78);
 }
 
+.nav-item-profile {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  text-decoration: none;
+  color: rgb(209, 78, 78);
+}
+
 .nav-item:hover {
   border-radius: 15px;
   background-color: rgb(43, 42, 42);
   /* border-image: url('../../assets/images/nav-item-under-highlight.png'); */
-  padding-top: 8px;
-  padding-bottom: 8px;
+
 }
 
 .search_form {
@@ -71,9 +81,33 @@ body {
 }
 
 .lairbnb_logo_black_orange_home {
+  position: relative;
   max-width: 200px;
   padding-left: 10px;
+  display: flex;
+  left: 200px;
 }
 /*
 .login_bttn {
 } */
+
+.banner_search_button {
+  background-color: rgb(255, 255, 255);
+  font-weight: 900;
+  text-transform: inherit;
+  padding: 5px;
+  color: red;
+  border: 1px solid lightgray;
+}
+.banner_search_button:hover {
+  background-color: rgb(209, 78, 78);
+  font-weight: 900;
+  text-transform: inherit;
+  color: rgb(255, 255, 255);
+
+}
+
+.banner_search {
+  display: flex;
+  flex-direction: column;
+}

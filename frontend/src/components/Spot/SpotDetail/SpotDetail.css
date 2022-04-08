@@ -19,7 +19,7 @@ main {
   color: black;
 }
 
-.delete-button  {
+.delete-button, .book-button  {
     border: none;
     background-color: rgb(158, 52, 52);
     border-radius: 20px;
@@ -82,3 +82,7 @@ main {
 
     padding: 10px;
   }
+
+  /* .book_date_search > Search.date_search_button {
+background-color: black;
+  } */

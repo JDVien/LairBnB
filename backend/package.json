@@ -27,12 +27,12 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.7.3",
+    "react-scroll-parallax": "^3.0.5",
     "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "dotenv-cli": "^5.1.0",
     "nodemon": "^2.0.15"
-    
   }
 }

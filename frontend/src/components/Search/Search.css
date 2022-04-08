@@ -1,10 +1,50 @@
-/* Search > body {
-  background-color: white;
-} */
+.search {
+  position: absolute;
+  top: 80px;
+  left: 25%;
+  width: 100vw;
 
-.search_page {
+}
+
+.search _ h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 559px;
+  padding: 10px;
   background-color: white;
-  height: 600px;
-  margin-left: 100px;
-  overflow-x: hidden;
+  position: absolute;
+  left: 0;
+  top: 380px;
+}
+
+.search > input {
+  width: 539px;
+  padding: 20px;
+  position:absolute;
+  left: 0;
+  height: 30px;
+  top: 420;
+
+}
+
+.search > input:focus {
+  outline-width: 0;
+
+}
+
+.search > button {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  top: 480px;
+  text-transform: inherit;
+  background-color: rgb(209, 78, 78);
+  width: 579px;
+  border-radius: 25px;
+}
+
+.search > button:hover {
+  background-color: white;
+  color: rgb(209, 78, 78);
 }
