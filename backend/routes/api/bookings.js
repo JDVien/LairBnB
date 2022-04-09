@@ -67,7 +67,7 @@ router.post(
   validateBooking,
   requireAuth,
   asyncHandler(async (req, res) => {
-    // const { image, name, price } = req.body;
+    const { startDate, endDate, totalCost, spotId } = req.body;
     const userId = req.user.id;
     const booking = await db.Booking.build(req.body);
     await booking.save();
@@ -76,7 +76,7 @@ router.post(
     //   bookingId: booking.id,
     // });
     console.log(booking)
-    return res.json({ booking });
+    return res.json( {booking} );
   })
 );
 

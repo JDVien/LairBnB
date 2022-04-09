@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Review.associate = function(models) {
-    // Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
-    // Booking.belongsTo(models.User, {foreignKey: "userId"});
+    Booking.belongsTo(models.Spot, {foreignKey: "spotId"});
+    Booking.belongsTo(models.User, {foreignKey: "userId"});
   };
   return Review;
 };

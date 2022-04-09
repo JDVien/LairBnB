@@ -6,10 +6,10 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: flex-end;
 
+  background-color: white;
   padding: 10px;
-  width: 500px;
+  width: 700px;
 }
 
 .booking_form > .book_price_per_night {

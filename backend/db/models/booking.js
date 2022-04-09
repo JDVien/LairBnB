@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     totalCost: {
       allowNull: false,
       type: DataTypes.INTEGER
+    },
+    isBooked: {
+      type: DataTypes.INTEGER
     }
   }, {});
   Booking.associate = function(models) {

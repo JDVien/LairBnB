@@ -24,7 +24,7 @@ const Spots = () => {
         {spots?.map(spot => {
           return (
           <NavLink to={`/${spot?.id}`} >
-             <SpotCard src='https://seattlerefined.com/resources/media/05b9d5de-4f6f-4f13-aa4a-67e709981102-large16x9_a.JPG?1575572677165'
+             <SpotCard src='https://media.wired.com/photos/5933b12d714b881cb296bd67/master/w_2560%2Cc_limit/colombo2_f.jpg'
                  className="spot" key={spot?.id}
                  name={spot?.name}
                  city={spot?.city}

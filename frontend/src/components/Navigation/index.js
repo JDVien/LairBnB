@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignupFormPage/SignUpFormModal";
+import Bookings from './../Booking/Bookings/Bookings'
+import BookingFormModal from './../Booking/Bookings/BookingFormModal'
 import Search from '../Search'
 import "./Navigation.css";
 
@@ -19,6 +21,7 @@ function Navigation({ isLoaded }) {
           {" "}
           Create a Spot
         </NavLink>
+
         <ProfileButton user={sessionUser} />
       </>
     );
@@ -28,6 +31,7 @@ function Navigation({ isLoaded }) {
         {/* <div className='sessionBtns'> */}
         <SignUpFormModal />
         <LoginFormModal />
+
         {/* </div> */}
 
         {/* <NavLink to="/signup" className='nav-item'>Sign Up</NavLink> */}
@@ -42,6 +46,10 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <NavLink className="nav-item" to="/spots">
         Nearby Spots
+      </NavLink>
+
+      <NavLink className='nav-item' to="/bookings">
+      My Bookings
       </NavLink>
       {isLoaded && sessionLinks}
       <div className="home_nav_searchbar_container">
