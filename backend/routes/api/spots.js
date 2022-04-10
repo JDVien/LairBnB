@@ -53,11 +53,13 @@ router.get(
 
 
 router.get(
-  '/spots/:id',
+  '/:id(\\d+)',
   asyncHandler(async (req, res, next) => {
-    const spot = await Spot.findByPk(req.params.id);
+    const spot = await db.Spot.findByPk(+req.params.id, {
+      include: [db.Image, db.Review, db.Booking],
+    });
     if (spot) {
-      return res.json( { spot } );
+      return res.json( spot );
     } else {
       next(spotNotFoundError(req.params.id));
     }

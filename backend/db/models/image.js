@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Image.associate = function(models) {
-    // Image.hasOne(models.Spot, {foreignKey: "spotId"});
+    Image.belongsTo(models.Spot, {foreignKey: "spotId"});
   };
   return Image;
 };

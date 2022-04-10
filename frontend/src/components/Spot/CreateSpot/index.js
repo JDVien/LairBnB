@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addSpot } from '../../../store/spot';
-
 import './CreateSpot.css';
 
 const CreateSpot = () => {
@@ -49,7 +48,7 @@ const CreateSpot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    
+
     const spot = {
       name,
       address,
@@ -69,8 +68,8 @@ const CreateSpot = () => {
     setValidationErrors([]);
     setHasSubmitted(false);
     if (newSpot) {
-      history.push(`/spots`);
-      window.location.reload();
+      history.push(`/spots`); // update later to redirect to detail page
+      window.location.reload(); // ? convert to modal to avoid this ? //
     }
   };
 

@@ -17,11 +17,10 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink className="nav-item" to="/create">
+        <NavLink className="nav-item" to="/spots/create">
           {" "}
           Create a Spot
         </NavLink>
-
         <ProfileButton user={sessionUser} />
       </>
     );
@@ -48,9 +47,11 @@ function Navigation({ isLoaded }) {
         Nearby Spots
       </NavLink>
 
+      {/* // doing this causes an interesting card hover affect on homescreen
       <NavLink className='nav-item' to="/bookings">
-      My Bookings
-      </NavLink>
+      <Bookings>Bookings</Bookings>
+      </NavLink> */}
+
       {isLoaded && sessionLinks}
       <div className="home_nav_searchbar_container">
         <form className="search_form">

@@ -7,10 +7,10 @@ import './Bookings.css'
 
 function BookingFormModal({ spot, user, booking}) {
   const [showModal, setShowModal] = useState(false);
-
+  console.log(booking)
   return (
     <>
-      {/* <NavLink to='/spots' onClick={() => setShowModal(true)} className='edit_bttn nav-item'>Update</NavLink> */}
+
       <button className='update_button' onClick={() => setShowModal(true)}>Book</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -20,5 +20,6 @@ function BookingFormModal({ spot, user, booking}) {
     </>
   );
 }
-
+// somehow get booking.isBooked passed into here to tag booked spots, preventing
+// it to be booked again by the same user.
 export default BookingFormModal;

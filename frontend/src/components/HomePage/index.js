@@ -1,5 +1,7 @@
 import React from "react";
+import { Route } from 'react-router-dom'
 import Card from "../Card/Card";
+import Bookings from '../Booking/Bookings/Bookings'
 import { NavLink } from 'react-router-dom';
 // import background from "./../../assets/images/curve.png";
 import "./HomePage.css";
@@ -17,7 +19,6 @@ function HomePage() {
                   className="random_spot_brave_bttn">I'm Brave
             </NavLink>
 
-
           </div>
         </div>
       </div>
@@ -30,6 +31,11 @@ function HomePage() {
               scroll.style.transform = `scale(${value}`;
             })} */}
             <h2>Ideas for your next trip</h2>
+            <div className='bookings_body'>
+            <Route  path="/bookings">
+                  <Bookings />
+                </Route>
+            </div>
             <div className="home_card_body">
               <Card
                 src="https://images5.fanpop.com/image/photos/29800000/The-Nightmare-On-Elm-Street-house-a-nightmare-on-elm-street-29856265-500-365.jpg"

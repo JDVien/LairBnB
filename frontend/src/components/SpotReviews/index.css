@@ -1,0 +1,10 @@
+.reviews_all_container {
+  border: 2px solid black;
+
+}
+.review_content {
+  color: black;
+}
+.spot-reviews-container {
+  height: 60vh;
+}

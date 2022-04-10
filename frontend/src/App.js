@@ -8,10 +8,13 @@ import HomePage from "./components/HomePage";
 import Spots from './components/Spot/Spot';
 import { getAllSpots } from './store/spot';
 import { getAllBookings } from './store/bookings';
+import { getReviews } from './store/reviews'
 import CreateSpot from './components/Spot/CreateSpot';
 import BookingCost from './components/Booking/bookingCost'
 import SpotDetail from './components/Spot/SpotDetail';
 import Bookings from './components/Booking/Bookings/Bookings';
+import BookingDetail from './components/Booking/BookingDetail/index'
+import Reviews from './components/SpotReviews/index';
 // import DetailPage from './components/DetailPage/DetailPage'
 import EditForm from './components/EditSpot/index';
 
@@ -23,6 +26,7 @@ function App() {
     // dispatch(getAllSpots());
     // dispatch(getAllBookings());
     // dispatch(getSpot());
+    // dispatch(getReviews())
   }, [dispatch]);
 
   return (
@@ -33,23 +37,29 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/create">
+          <Route path="/spots/create">
             <CreateSpot />
           </Route>
-          <Route path="/spots">
+          <Route exact path="/spots">
             <Spots />
           </Route>
           <Route path='/:spotId'>
           <SpotDetail />
           </Route>
-          <Route path="/:id/edit">
+          <Route path="/spots/:id/edit">
             <EditForm />
           </Route>
-          <Route exact path="/bookings">
+          <Route  exact path="/bookings">
             <Bookings />
+          </Route>
+          <Route exact path='/bookings/:bookingId'>
+            <BookingDetail />
           </Route>
           <Route path="/create">
             <BookingCost />
+          </Route>
+          <Route path="/spots/:spotId/reviews">
+            <Reviews />
           </Route>
         </Switch>
       )}

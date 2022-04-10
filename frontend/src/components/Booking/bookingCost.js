@@ -15,14 +15,12 @@ const BookingCost = ({ spot, booking, hideModal }) => {
   const history = useHistory();
 
   const { id } = useParams();
-  console.log(id);
-
   const today = new Date().toDateString();
-  console.log(today, "***********");
+
 
   const [startDate, setStartDate] = useState("2022-04-15");
   const [endDate, setEndDate] = useState("2022-04-15");
-
+  const [isBooked, setIsBooked] = useState(0);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -57,7 +55,7 @@ const BookingCost = ({ spot, booking, hideModal }) => {
   }
 
   // converting diff into days
-  const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+  const daysDiff = timeDiff / (86400000);
 
   const totalCost = daysDiff * newPrice;
 
@@ -79,10 +77,12 @@ const BookingCost = ({ spot, booking, hideModal }) => {
     e.preventDefault();
     setHasSubmitted(true);
 
+    setIsBooked(1);
     const booking = {
       startDate,
       endDate,
       totalCost,
+      isBooked,
       spotId: spot.id,
       userId: sessionUser.id,
     };
@@ -99,7 +99,7 @@ const BookingCost = ({ spot, booking, hideModal }) => {
     // history.push(`/spots/${spot.id}`);
     hideModal();
   };
-
+  console.log(isBooked, '----------------------------------')
   return (
     <div className="bookingCont">
       <form onSubmit={handleSubmit}>

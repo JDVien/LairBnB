@@ -45,13 +45,13 @@ const validateBooking = [
 router.get(
   '/',
   async (req, res) => {
-    const bookings = await Booking.findAll();
-    return res.json( bookings );
+    const bookings = await db.Booking.findAll();
+    return res.json( {bookings} );
   })
 
 
 router.get(
-  '/bookings/:id',
+  '/:id(\\d+)',
   asyncHandler(async (req, res, next) => {
     const booking = await Booking.findByPk(req.params.id);
     if (booking) {

@@ -1,10 +1,10 @@
 import { csrfFetch } from "./csrf";
 
-const GET_ALL_BOOKINGS = 'booking/GET_ALL_BOOKINGS';
-const ADD_BOOKING = 'bookings/ADD_BOOKING';
-const REMOVE_BOOKING = 'bookings/REMOVE_BOOKING';
-const GET_BOOKING = 'booking/GET_BOOKING'
-const UPDATE_BOOKING = 'bookings/UPDATE_BOOKING';
+const GET_ALL_BOOKINGS = 'booking/getBookings';
+const ADD_BOOKING = 'bookings/addOneBooking';
+const REMOVE_BOOKING = 'bookings/removeOneBooking';
+const GET_BOOKING = 'booking/getOneBooking'
+const UPDATE_BOOKING = 'bookings/updateBooking';
 
 const getBookings = (bookings) => {
   return {
@@ -36,7 +36,7 @@ const removeOneBooking = (id) => {
   return { type: REMOVE_BOOKING, payload: id };
 };
 
-export const getAllBookings = () => async (dispatch) => {
+export const getAllBookings = (bookings) => async (dispatch) => {
   const response = await csrfFetch('/api/bookings');
   if (response.ok) {
     const data = await response.json();
@@ -45,11 +45,11 @@ export const getAllBookings = () => async (dispatch) => {
 };
 
 export const getBooking = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/${id}`);
-  if (response.ok) {
+  const response = await fetch(`/api/bookings/${id}`);
+
     const data = await response.json();
-    dispatch(getOneBooking(data.booking))
-  }
+    dispatch(getOneBooking(data))
+
 }
 
 export const addBooking = (booking) => async (dispatch) => {
@@ -113,13 +113,13 @@ const bookingReducer = (state = {}, action) => {
       newState = { ...state };
       delete newState[action.payload];
       return {};
-    case GET_BOOKING: {
-      let booking = {};
-      newState = { ...state, [action.payload.id]:
-        {...state[action.payload.id], ...action.booking }}
-        booking = Object.assign({}, state[action.payload.id])
-      return {booking};
-    }
+    // case GET_BOOKING: {
+    //   let booking = {};
+    //   newState = { ...state, [action.payload.id]:
+    //     {...state[action.payload.id], ...action.booking }}
+    //     booking = Object.assign({}, state[action.payload.id])
+    //   return {booking};
+    // }
     default:
       return state;
   }

@@ -19,7 +19,7 @@ const EditForm = ({ spot, hideModal }) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [validationErrors, setValidationErrors] = useState([])
   // const [image, setImage] = useState('');
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     const errors = [];

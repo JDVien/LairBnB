@@ -6,6 +6,7 @@
   transition:  transform 100ms ease-in;
   cursor: pointer;
   max-width: 350px;
+
 }
 
 .spot_card:hover {
@@ -27,4 +28,5 @@
 .card {
   background-color: white;
   height: 375px;
+
 }

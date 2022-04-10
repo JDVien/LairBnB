@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 const ADD_SPOTS = 'spot/ADD_SPOTS';
 const ADD_ONE_SPOT = 'spots/addOneSpot';
 const REMOVE_ONE_SPOT = 'spots/removeOneSpot';
-const GET_SPOT = 'spot/GET_SINGLE_SPOT'
+const GET_SPOT = 'spots/GET_SPOT'
 const UPDATE_SPOT = 'spots/UPDATE_SPOT';
 
 const addSpots = (spots) => {
@@ -27,10 +27,12 @@ const updateSpot = (spot) => {
   }
 }
 
-const getOneSpot = spot => ({
+const getOneSpot = (spot) => {
+  return {
   type: GET_SPOT,
   payload: spot,
-});
+  }
+};
 
 const removeOneSpot = (id) => {
   return { type: REMOVE_ONE_SPOT, payload: id };
@@ -45,11 +47,11 @@ export const getAllSpots = () => async (dispatch) => {
 };
 
 export const getSpot = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/${id}`);
-  if (response.ok) {
+  const response = await fetch(`/api/spots/${id}`);
+
     const data = await response.json();
-    dispatch(getOneSpot(data.spot))
-  }
+    dispatch(getOneSpot(data))
+
 }
 
 export const addSpot = (spot) => async (dispatch) => {
@@ -114,11 +116,7 @@ const spotReducer = (state = {}, action) => {
       delete newState[action.payload];
       return {};
     case GET_SPOT: {
-      let spot = {};
-      newState = { ...state, [action.payload.id]:
-        {...state[action.payload.id], ...action.spot }}
-        spot = Object.assign({}, state[action.payload.id])
-      return {spot};
+      return { ...state, [action.payload.id]: action.payload };
     }
     default:
       return state;

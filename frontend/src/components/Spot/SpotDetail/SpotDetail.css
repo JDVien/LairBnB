@@ -1,6 +1,6 @@
 .spot_detail {
   width: 1200px;
-  height: 800px;
+  height: 100vh;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -79,10 +79,14 @@ main {
     -webkit-box-align: center;
     display: block;
     margin: 10px;
-
     padding: 10px;
   }
 
   /* .book_date_search > Search.date_search_button {
 background-color: black;
   } */
+.reviewList {
+  border: 2px solid black;
+  height: 60vh;
+  color: black;
+}

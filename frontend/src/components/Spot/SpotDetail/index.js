@@ -1,41 +1,49 @@
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { deleteSpot } from '../../../store/spot';
-import { useState } from 'react';
-import EditFormModal from '../../EditSpot/EditFormModal';
-import BookingFormModal from '../../Booking/Bookings/BookingFormModal';
-import BookingCost from '../../Booking/bookingCost'
-import './SpotDetail.css';
+import { useHistory, useParams, NavLink, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import EditFormModal from "../../EditSpot/EditFormModal";
+import BookingFormModal from "../../Booking/Bookings/BookingFormModal";
+import Reviews from '../../SpotReviews/index'
+import BookingCost from "../../Booking/bookingCost";
+import SpotReviewModal from "../../SpotReviews/SpotReviewModal";
+import EditReviewFormModal from "../../SpotReviews/EditReviewFormModal";
+import { deleteSpot } from "../../../store/spot";
+import { removeReview } from "../../../store/reviews";
+import { getSpot } from "../../../store/spot";
+import { getBooking } from "../../../store/bookings";
+import { getReviews } from "../../../store/reviews";
 
-const SpotDetail = ({
-  id,
-  name,
-  address,
-  city,
-  state,
-  country,
-  price,
-  userId,
-}) => {
+
+import "./SpotDetail.css";
+
+const SpotDetail = () => {
   const [showSearch, setShowSearch] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { spotId } = useParams();
   const { bookingId } = useParams();
+  const { reviewId } = useParams();
   const spot = useSelector((state) => state.spots[spotId]);
   const booking = useSelector((state) => state.bookings[bookingId]);
+  const reviews = useSelector((state) => Object.values(state.reviews));
+
   const history = useHistory();
   // const spots = { id, name, address, city, state, country, price, userId }
-  // useEffect(() => {
-  //   dispatch(getSpot(spotId));
-  // }, [dispatch, spotId]);
+  useEffect(() => {
+    dispatch(getSpot(spotId));
+  }, [dispatch, spotId]);
+
+  useEffect(() => {
+    dispatch(getBooking(bookingId));
+  }, [dispatch, bookingId]);
 
   const handleDelete = (spotId) => {
     dispatch(deleteSpot(spotId));
     history.push("/spots");
-    window.location.reload();
+    // window.location.reload();
   };
+
+  // reviews = reviews.
 
   if (!spot) return null;
   let content = (
@@ -60,11 +68,44 @@ const SpotDetail = ({
     </div>
   );
 
+  let allReviews = (
+    <div className="reviewList">
+      {spot?.Reviews?.map((review) => (
+        <div className="review_content" key={review?.id}>
+          <p>Rating: {review?.rating}/5</p>
+          <p>Comment: {review?.review}</p>
+          <p>{review?.User?.username}</p>
+          {sessionUser?.id === review?.userId ? (
+            <div>
+              <button
+                onClick={async () => {
+                  await dispatch(removeReview(review.id));
+                }}
+              >
+                {" "}
+                Delete
+              </button>
+              <div className='spot-reviews-container'>
+                <Reviews review={review }spotId={spot.id}/>
+              </div>
+              <EditReviewFormModal review={review} />
+            </div>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+
   return (
+    <>
     <div className="spot_detail">
       {/* <img src={image} alt={name} /> */}
       {/* {spots.map((spot) => ( */}
       {content}
+      {allReviews}
+      <div className='spot-reviews-container'>
+      <Reviews spotId={spot.id}/>
+    </div>
       {sessionUser && sessionUser.id === spot.userId && (
         <div className="button-row">
           <button
@@ -78,14 +119,26 @@ const SpotDetail = ({
         </div>
       )}
       {sessionUser && sessionUser.id !== spot.userId && (
-        <BookingFormModal spot={spot} user={{...sessionUser}} booking={booking} />
+        <BookingFormModal
+          spot={spot}
+          user={{ ...sessionUser }}
+          booking={booking}
+        />
         // <div className="book_date">
         //   <div className="book_date_search">
         //     <BookingCost user={{ ...sessionUser }} spot={spot} />
         //   </div>
         // </div>
       )}
+      {/* {sessionUser &&
+        sessionUser.id !== spot.userId &&
+        sessionUser.id !== booking?.userId && (
+          <SpotReviewModal spot={spot} user={{ ...sessionUser }} />
+        )} */}
+      {/* {console.log(booking)} */}
     </div>
+
+    </>
   );
 };
 

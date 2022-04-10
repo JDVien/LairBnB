@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import Bookings from '../Booking/Bookings/Bookings'
 import './Navigation.css'
 function ProfileButton({ user }) {
@@ -41,6 +41,8 @@ function ProfileButton({ user }) {
           <li>{user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>
+          </li>
+          <li><NavLink className='nav-item' to="/bookings"></NavLink>
           </li>
         </ul>
       )}

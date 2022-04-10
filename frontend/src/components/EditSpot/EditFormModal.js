@@ -7,7 +7,7 @@ import './EditSpot.css'
 
 function EditFormModal({ user, spot }) {
   const [showModal, setShowModal] = useState(false);
- console.log("spot", spot)
+//  console.log("spot", spot)
   return (
     <>
       {/* <NavLink to='/spots' onClick={() => setShowModal(true)} className='edit_bttn nav-item'>Update</NavLink> */}
