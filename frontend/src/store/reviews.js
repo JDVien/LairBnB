@@ -20,10 +20,10 @@ const getReview = (reviews, spotId) => {
   };
 };
 
-const updateReview = (reviews) => {
+const updateReview = (review) => {
   return {
     type: UPDATE_REVIEW,
-    payload: reviews
+    payload: review
   };
 };
 
@@ -45,8 +45,11 @@ export const getReviews = (spotId) => async (dispatch) => {
 
 
 export const addReview = review => async (dispatch) => {
-  const response = await csrfFetch('/api/reviews/create', {
+  const response = await csrfFetch(`/api/reviews/create`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(review)
   });
   const data = await response.json();
@@ -55,8 +58,8 @@ export const addReview = review => async (dispatch) => {
 };
 
 export const editReview = review => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${review.id}`, {
-    method: 'PATCH',
+  const response = await csrfFetch(`/api/reviews/${review.id}/edit`, {
+    method: 'PUT',
     body: JSON.stringify(review),
   });
   const data = await response.json();

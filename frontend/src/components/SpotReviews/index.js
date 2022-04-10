@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import SpotReviewModal from './SpotReviewModal'
-import EditReviewFormModal from './EditReviewFormModal';
+import EditReviewFormModal from './EditReviewForm/EditReviewFormModal';
 import { getReviews } from '../../store/reviews';
 import './index.css';
 import { useEffect } from 'react';
@@ -10,7 +10,8 @@ const Reviews = () => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  // const spot = useSelector(state => state.spot[spotId]);
+  const spots = useSelector(state => Object.values(state.spots));
+  const spot = useSelector((state) => state.spots[spotId]);
   let reviews = useSelector(state => {
     return Object.values(state.reviews)
   });
@@ -25,12 +26,13 @@ const Reviews = () => {
 
   return (
     <div className='reviews_all_container'>
-       <div className='create-review-modal'>
-        <SpotReviewModal />
-      </div>
+       {/* <div className='create-review-modal'>
+        <SpotReviewModal review={reviews}/>
+      </div> */}
       {reviews?.map(review =>
         <div className='one-review-div' key={review?.id}>
           <div className='review-div'>
+            <h2>Your Review</h2>
             <div className='profile-logo'>
               <i className="fas fa-user-circle" />
               {/* <p>{review?.User?.username}</p> */}
@@ -49,7 +51,7 @@ const Reviews = () => {
             {sessionUser && sessionUser.id === review?.userId && (
               <div className='action-bttns-reviews'>
                 <div className='action-btt-review'>
-                  <EditReviewFormModal review={review} />
+                  <EditReviewFormModal spot={spot} review={review} user={{...sessionUser}} />
                 </div>
                 {/* <div className='action-btt-review'>
                   <DeletereviewModal review={review} />

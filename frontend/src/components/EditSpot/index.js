@@ -83,7 +83,7 @@ const EditForm = ({ spot, hideModal }) => {
     <form className='update_spot_form' onSubmit={handleSubmit}>
       <h3>Update Spot</h3>
       {hasSubmitted &&
-        <ul classname='errors'>
+        <ul className='errors'>
           {validationErrors.map((error) => (
             <li key={error}>{error}</li>
           ))}

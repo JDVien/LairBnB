@@ -15,6 +15,8 @@ import SpotDetail from './components/Spot/SpotDetail';
 import Bookings from './components/Booking/Bookings/Bookings';
 import BookingDetail from './components/Booking/BookingDetail/index'
 import Reviews from './components/SpotReviews/index';
+import SpotReviewForm from './components/SpotReviews/SpotReviewForm'
+import EditReviewForm from './components/SpotReviews/EditReviewForm/EditReviewForm'
 // import DetailPage from './components/DetailPage/DetailPage'
 import EditForm from './components/EditSpot/index';
 
@@ -52,15 +54,21 @@ function App() {
           <Route  exact path="/bookings">
             <Bookings />
           </Route>
-          <Route exact path='/bookings/:bookingId'>
+          <Route path='/bookings/:bookingId'>
             <BookingDetail />
           </Route>
           <Route path="/create">
             <BookingCost />
           </Route>
-          <Route path="/spots/:spotId/reviews">
-            <Reviews />
+          <Route path="/reviews/create">
+            <SpotReviewForm />
           </Route>
+          <Route path="/reviews/:reviewId/edit">
+            <EditReviewForm />
+          </Route>
+          {/* <Route path="/spots/:spotId/reviews">
+            <Reviews />
+          </Route> */}
         </Switch>
       )}
     </>

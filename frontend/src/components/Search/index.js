@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Search.css';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
@@ -8,6 +9,7 @@ import 'react-date-range/dist/theme/default.css';
 function Search( spot ) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [showSearch, setShowSearch] = useState(false);
 
   const selectionRange = {
     startDate: startDate,
@@ -33,8 +35,12 @@ function Search( spot ) {
       <input min={0}
       defaultValue={2}
       type="numbers" />
-      <button className='date_search_button'>Search LairBnB</button>
-
+      {!showSearch &&
+        <button className='date_search_button' variant='outlined' onClick={() => setShowSearch(showSearch)}>
+              <NavLink to='/spots'>Search LairBnB!</NavLink>
+              {/* {showSearch ? "Hide" : "Search Dates"} */}
+        </button>
+      }
     </div>
   )
 }

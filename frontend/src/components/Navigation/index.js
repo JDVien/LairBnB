@@ -13,6 +13,7 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showSearch, setShowSearch] = useState(false);
+  
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (

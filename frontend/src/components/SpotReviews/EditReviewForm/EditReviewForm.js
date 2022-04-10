@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../store/reviews';
-import { getSpot } from '../../store/spot';
+import { editReview } from '../../../store/reviews';
+import { getSpot } from '../../../store/spot';
+import './EditReviewForm.css';
 
-const SpotReviewForm = ({ spot, user, hideModal }) => {
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState(1);
+const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
+  const [review, setReview] = useState(thisReview?.review);
+  const [rating, setRating] = useState(thisReview?.rating);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const sessionUser = useSelector((state) => state.session.user );
@@ -14,39 +15,39 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(getSpot(spot, id));
-  }, [dispatch, id, spot, hasSubmitted]);
 
   useEffect(() => {
     const errors = [];
-    if (review.length < 1) errors.push('Review field cannot be empty');
+    // if (review.length < 1) errors.push('Review field cannot be empty');
     if (rating < 1) errors.push("Please leave a rating");
     setValidationErrors(errors);
-  }, [review, rating]);
+  }, [ rating]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
 
+    // console.log('---------qqqqqqqq------', updateReview.id)
     const newReview = {
+      id: thisReview.id,
       review,
       rating,
       spotId: spot.id,
       userId: sessionUser.id,
     };
-    console.log('-------------------', spot.id)
-    let submitReview = await dispatch(addReview(newReview));
+    let updatedReview = await dispatch(editReview(newReview));
     setReview('');
     setRating('');
     setHasSubmitted(false);
     setValidationErrors([]);
     hideModal();
-    // history.push(`/${id}`);
+    window.location.reload();
+    // history.push(`/${thisReview.id}`);
+
   };
 
   return (
-    <div className='review_container'>
+    <div className='update_review_container'>
       <form onSubmit={handleSubmit}>
         <h1>Write a Review</h1>
         <ul className='errors'>
@@ -54,18 +55,17 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
             <li key={error}>{error}</li>
           ))}
         </ul>
-      <div className='review_body_form'>
-        <div className='review_body_content'>
-          <label htmlFor='review_content'>Review</label>
+      <div className='update_review_body_form'>
+        <div className='update_review_body_content'>
+          <label htmlFor='update_review_content'>Review</label>
           <textarea
             name='review'
             id='review'
             value={review}
-            placeholder='Provide some feedback!'
             onChange={(e) => setReview(e.target.value)}
           />
         </div>
-        <div className='review_body_rating'>
+        <div className='update_review_body_rating'>
           <label htmlFor='rating'>Rating</label>
           <select
             name='rating'
@@ -79,9 +79,9 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
               <option value="5">5</option>
           </select>
         </div>
-        <div className='review_submit_bttn'>
+        <div className='update_review_submit_bttn'>
           <button type='submit' >
-            Submit Rasdsadasdeview
+            Update Review
           </button>
         </div>
       </div>
@@ -90,4 +90,4 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
   )
 }
 
-export default SpotReviewForm;
+export default EditReviewForm;

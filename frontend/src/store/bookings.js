@@ -27,7 +27,7 @@ const updateBooking = (booking) => {
   }
 }
 
-const getOneBooking = booking => ({
+const getOneBooking = (booking) => ({
   type: GET_BOOKING,
   payload: booking,
 });
@@ -113,13 +113,13 @@ const bookingReducer = (state = {}, action) => {
       newState = { ...state };
       delete newState[action.payload];
       return {};
-    // case GET_BOOKING: {
-    //   let booking = {};
-    //   newState = { ...state, [action.payload.id]:
-    //     {...state[action.payload.id], ...action.booking }}
-    //     booking = Object.assign({}, state[action.payload.id])
-    //   return {booking};
-    // }
+    case GET_BOOKING: {
+      let booking = {};
+      newState = { ...state, [action.payload.id]:
+        {...state[action.payload.id], ...action.booking }}
+        booking = Object.assign({}, state[action.payload.id])
+      return {booking};
+    }
     default:
       return state;
   }

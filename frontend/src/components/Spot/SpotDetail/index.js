@@ -6,7 +6,7 @@ import BookingFormModal from "../../Booking/Bookings/BookingFormModal";
 import Reviews from '../../SpotReviews/index'
 import BookingCost from "../../Booking/bookingCost";
 import SpotReviewModal from "../../SpotReviews/SpotReviewModal";
-import EditReviewFormModal from "../../SpotReviews/EditReviewFormModal";
+import EditReviewFormModal from "../../SpotReviews/EditReviewForm/EditReviewFormModal";
 import { deleteSpot } from "../../../store/spot";
 import { removeReview } from "../../../store/reviews";
 import { getSpot } from "../../../store/spot";
@@ -17,7 +17,6 @@ import { getReviews } from "../../../store/reviews";
 import "./SpotDetail.css";
 
 const SpotDetail = () => {
-  const [showSearch, setShowSearch] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { spotId } = useParams();
@@ -69,12 +68,14 @@ const SpotDetail = () => {
   );
 
   let allReviews = (
+    <div className='reviews'>
+    <div className='create-review-modal'>
     <div className="reviewList">
       {spot?.Reviews?.map((review) => (
         <div className="review_content" key={review?.id}>
-          <p>Rating: {review?.rating}/5</p>
-          <p>Comment: {review?.review}</p>
+          <p>Rating: {review?.rating} Stars</p>
           <p>{review?.User?.username}</p>
+          <p>says: {review?.review}</p>
           {sessionUser?.id === review?.userId ? (
             <div>
               <button
@@ -85,14 +86,17 @@ const SpotDetail = () => {
                 {" "}
                 Delete
               </button>
-              <div className='spot-reviews-container'>
+              {/* <div className='spot-reviews-container'>
                 <Reviews review={review }spotId={spot.id}/>
-              </div>
-              <EditReviewFormModal review={review} />
+              </div> */}
+              <EditReviewFormModal spot={spot} review={review} user={{...sessionUser}} />
+
             </div>
           ) : null}
         </div>
       ))}
+      </div>
+      </div>
     </div>
   );
 
@@ -103,9 +107,9 @@ const SpotDetail = () => {
       {/* {spots.map((spot) => ( */}
       {content}
       {allReviews}
-      <div className='spot-reviews-container'>
-      <Reviews spotId={spot.id}/>
-    </div>
+
+      {/* <Reviews spot={spot}/> */}
+
       {sessionUser && sessionUser.id === spot.userId && (
         <div className="button-row">
           <button
@@ -124,12 +128,16 @@ const SpotDetail = () => {
           user={{ ...sessionUser }}
           booking={booking}
         />
+
         // <div className="book_date">
         //   <div className="book_date_search">
         //     <BookingCost user={{ ...sessionUser }} spot={spot} />
         //   </div>
         // </div>
       )}
+              <div className='new_review_modal'>
+        <SpotReviewModal spot={spot} user={{...sessionUser }} />
+        </div>
       {/* {sessionUser &&
         sessionUser.id !== spot.userId &&
         sessionUser.id !== booking?.userId && (
