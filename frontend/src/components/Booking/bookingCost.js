@@ -15,7 +15,7 @@ const BookingCost = ({ spot, booking, hideModal }) => {
   const history = useHistory();
 
   const { id } = useParams();
-  const today = new Date().toDateString();
+  // const today = new Date().toDateString();
 
 
   const [startDate, setStartDate] = useState("2022-04-15");
@@ -24,40 +24,38 @@ const BookingCost = ({ spot, booking, hideModal }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  console.log(startDate, endDate, "^^^^^^^^^^^^");
-  const newPrice = parseInt(spot.price);
+  const finalCost = parseInt(spot.price);
 
-  const startArr = startDate.split("-");
-  const startYear = startArr[0];
-  const startMonth = startArr[1];
-  const startDay = startArr[2];
+  const startArray = startDate.split("-");
+  const startYear = startArray[0];
+  const startMonth = startArray[1];
+  const startDay = startArray[2];
 
-  const endArr = endDate.split("-");
-  const endYear = endArr[0];
-  const endMonth = endArr[1];
-  const endDay = endArr[2];
+  const endArray = endDate.split("-");
+  const endYear = endArray[0];
+  const endMonth = endArray[1];
+  const endDay = endArray[2];
 
   const date1 = new Date(+startYear, +startMonth, +startDay);
 
-  // creating the date 2 with sample input date.
+
   const date2 = new Date(+endYear, +endMonth, +endDay);
 
-  // getting milliseconds for both dates
-  const date1InMs = date1.getTime();
-  const date2InMs = date2.getTime();
 
-  // getting the diff between two dates.
-  let timeDiff = 0;
-  if (date1InMs > date2InMs) {
-    timeDiff = date1InMs - date2InMs;
+  const dateFirst = date1.getTime();
+  const dateSecond = date2.getTime();
+
+  let timeGap = 0;
+  if (dateFirst > dateSecond) {
+    timeGap = dateFirst - dateSecond;
   } else {
-    timeDiff = date2InMs - date1InMs;
+    timeGap = dateSecond - dateFirst;
   }
 
-  // converting diff into days
-  const daysDiff = timeDiff / (86400000);
 
-  const totalCost = daysDiff * newPrice;
+  const daysGap = timeGap / (86400000);
+
+  const totalCost = daysGap * finalCost;
 
   useEffect(() => {
     const errors = [];
@@ -67,11 +65,11 @@ const BookingCost = ({ spot, booking, hideModal }) => {
     if (endDate.length < 1) {
       errors.push("End Date is required");
     }
-    if (daysDiff < 0) {
+    if (daysGap < 0) {
       errors.push("End Date must be after Start Date");
     }
     setValidationErrors(errors);
-  }, [startDate, endDate, daysDiff]);
+  }, [startDate, endDate, daysGap]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,9 +85,7 @@ const BookingCost = ({ spot, booking, hideModal }) => {
       userId: sessionUser.id,
     };
 
-    let createdBooking;
-
-    createdBooking = await dispatch(addBooking(booking));
+   let finalBooking = await dispatch(addBooking(booking));
 
     setStartDate("");
     setEndDate("");
