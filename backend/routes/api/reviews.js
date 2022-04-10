@@ -29,20 +29,55 @@ router.post(
   })
 );
 
-router.patch(
-  "/:id",
-  requireAuth,
-  csrfProtection,
+// router.post(
+//   '/create',
+//   requireAuth,
+//   asyncHandler(async (req, res) => {
+//     // const { image, updatedReview, price } = req.body;
+//     const userId = req.user.id;
+//     const updatedReview = await db.Review.build(req.body);
+//     await updatedReview.save();
+//     // const image = await db.Image.create({
+//     //   image: req.body.image,
+//     //   spotId: updatedReview.id,
+//     // });
+//     console.log(updatedReview)
+//     return res.json({ updatedReview });
+//   })
+// );
+
+// router.patch(
+//   "/:id/edit",
+//   requireAuth,
+//   csrfProtection,
+//   asyncHandler(async (req, res) => {
+//     const { updatedReview, rating } = req.body;
+//     const newReview = await db.Review.findByPk(+req.body.id);
+//     console.log(updatedReview, "BEFORE");
+//     await newReview.update({
+//       rating,
+//       updatedReview,
+//     });
+//     console.log(newReview, "AFTER");
+//     res.json(newReview);
+//   })
+// );
+router.put(
+  '/:id/edit',
+  // validateSpot,
   asyncHandler(async (req, res) => {
-    const { comment, rating } = req.body;
-    const review = await db.Review.findByPk(+req.body.id);
-    console.log(review, "BEFORE");
-    await review.update({
-      rating,
-      comment,
-    });
-    console.log(review, "AFTER");
-    res.json(review);
+    const updatedReview = await db.Review.findByPk(req.params.id);
+
+    if (updatedReview) {
+      // updatedReview.image = req.body.image || updatedReview.image;
+      updatedReview.review = req.body.review || updatedReview.revieww;
+      updatedReview.address = req.body.rating || updatedReview.rating;
+
+      await updatedReview.save();
+      res.json({ updatedReview });
+    // } else {
+    //   next(spotNotFoundError(req.params.id));
+    }
   })
 );
 
@@ -51,9 +86,9 @@ router.delete(
   requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const review = await db.Review.findByPk(req.params.id);
-    await review.destroy();
-    res.json(review);
+    const updatedReview = await db.Review.findByPk(req.params.id);
+    await updatedReview.destroy();
+    res.json(updatedReview);
   })
 );
 

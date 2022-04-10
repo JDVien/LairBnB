@@ -1,6 +1,7 @@
 'use strict';
 const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs'); // for validatePassword method below
+const { user } = require("pg/lib/defaults");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {

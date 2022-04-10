@@ -49,11 +49,19 @@ router.get(
     return res.json( {bookings} );
   })
 
+  // router.get(`/`, async(req, res) => {
+
+  //   const reviews = await db.Booking.findAll({
+  //       order: [[ 'createdAt', 'DESC' ]]
+  //   });
+  //   return res.json( {bookings} );
+  // })
+
 
 router.get(
   '/:id(\\d+)',
   asyncHandler(async (req, res, next) => {
-    const booking = await Booking.findByPk(req.params.id);
+    const booking = await db.Booking.findByPk(req.params.id);
     if (booking) {
       return res.json( { booking } );
     } else {
