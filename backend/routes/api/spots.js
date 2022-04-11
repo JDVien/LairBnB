@@ -41,6 +41,7 @@ const validateSpot = [
   check('city').not().isEmpty(),
   check('state').not().isEmpty(),
   check('country').not().isEmpty(),
+  check('amenities').not().isEmpty(),
   handleValidationErrors
 ];
 
@@ -94,6 +95,23 @@ router.post(
   })
 );
 
+// router.put("/:id/edit", async (req, res) => {
+//   const id = req.params.id;
+//   const spot = await db.Spot.findByPk(+id, {
+//     include: [
+//       {
+//         model: db.Image,
+//       },
+//     ],
+//   });
+//   await spot.update(req.body);
+//   const image = await db.Image.create({
+//     image: req.body.image,
+//     spotId: spot.id,
+//   });
+//   return res.json(spot);
+// });
+
 router.put(
   '/:id/edit',
   validateSpot,
@@ -108,6 +126,7 @@ router.put(
       spot.state = req.body.state || spot.state;
       spot.country = req.body.country || spot.country;
       spot.price = req.body.price || spot.price;
+      spot.spotType = req.body.spotType || spot.spotType;
 
       await spot.save();
       res.json({ spot });

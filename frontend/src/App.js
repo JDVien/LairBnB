@@ -51,13 +51,13 @@ function App() {
           <Route path="/spots/:id/edit">
             <EditForm />
           </Route>
-          <Route  exact path="/bookings">
+          <Route  path="/bookings">
             <Bookings />
           </Route>
-          <Route path='/bookings/:bookingId'>
+          {/* <Route path='/bookings/:bookingId'>
             <BookingDetail />
-          </Route>
-          <Route path="/create">
+          </Route> */}
+          <Route path="/bookings/create">
             <BookingCost />
           </Route>
           <Route path="/reviews/create">

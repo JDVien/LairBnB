@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SpotReviewForm from './SpotReviewForm';
 import { NavLink } from 'react-router-dom';
-
+import './SpotReviewForm.css'
 const SpotReviewModal = ({user, spot}) => {
   const [showModal, setShowModal] = useState(false);
 

@@ -41,10 +41,11 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button className='logout_bttn' onClick={logout}>Log Out</button>
           </li>
-          <li><NavLink className='nav-item' to="/bookings"></NavLink>
-          </li>
+
+          {/* <li><NavLink className='nav-item' to="/bookings"></NavLink>
+          </li> */}
         </ul>
         </div>
       )}

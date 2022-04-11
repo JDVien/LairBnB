@@ -38,7 +38,6 @@ const BookingCost = ({ spot, booking, hideModal }) => {
 
   const date1 = new Date(+startYear, +startMonth, +startDay);
 
-
   const date2 = new Date(+endYear, +endMonth, +endDay);
 
 
@@ -75,7 +74,7 @@ const BookingCost = ({ spot, booking, hideModal }) => {
     e.preventDefault();
     setHasSubmitted(true);
 
-    setIsBooked(1);
+    // setIsBooked(1);
     const booking = {
       startDate,
       endDate,
@@ -92,10 +91,12 @@ const BookingCost = ({ spot, booking, hideModal }) => {
     setHasSubmitted(false);
     setValidationErrors([]);
 
-    // history.push(`/spots/${spot.id}`);
-    hideModal();
+    history.push(`/spots`);
+    // hideModal();
+
+
   };
-  console.log(isBooked, '----------------------------------')
+
   return (
     <div className="bookingCont">
       <form className='book_form' onSubmit={handleSubmit}>

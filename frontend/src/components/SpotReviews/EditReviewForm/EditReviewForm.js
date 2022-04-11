@@ -18,10 +18,10 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
 
   useEffect(() => {
     const errors = [];
-    // if (review.length < 1) errors.push('Review field cannot be empty');
+    if (review.length < 1) errors.push('Review field cannot be empty');
     if (rating < 1) errors.push("Please leave a rating");
     setValidationErrors(errors);
-  }, [ rating]);
+  }, [review, rating]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,14 +42,14 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
     setValidationErrors([]);
     console.log(updatedReview)
     hideModal();
-    // window.location.reload();
+    window.location.reload();
     // history.push(`/${thisReview.id}`);
 
   };
 
   return (
     <div className='update_review_container'>
-      <form onSubmit={handleSubmit}>
+      <form className='edit_form' onSubmit={handleSubmit}>
         <h1>Write a Review</h1>
         <ul className='errors'>
           {validationErrors.map((error) => (
@@ -58,8 +58,8 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
         </ul>
       <div className='update_review_body_form'>
         <div className='update_review_body_content'>
-          <label htmlFor='update_review_content'>Review</label>
-          <textarea
+          <label htmlFor='update_review_content'></label>
+          <textarea className='text_box_edit'
             name='review'
             id='review'
             value={review}
@@ -81,7 +81,7 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
           </select>
         </div>
         <div className='update_review_submit_bttn'>
-          <button type='submit' >
+          <button className='edit_review_bttn' type='submit' >
             Update Review
           </button>
         </div>

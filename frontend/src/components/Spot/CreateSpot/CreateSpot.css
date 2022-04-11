@@ -41,7 +41,6 @@
   -webkit-box-align: center;
   display: block;
   margin: 10px;
-
   padding: 10px;
 }
 
@@ -61,4 +60,28 @@
 
 #house_icon {
   color: black;
+}
+
+
+.create_textbox {
+  width: 100%;
+  padding: 15px;
+  height: 200px;
+  width: 300px;
+  border: 1px solid lightgrey;
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+.textboxes_div {
+  display: inline-flex;
+  padding: 50px;
+}
+
+#spotType {
+  width: 100%;
+  padding: 15px;
+  width: 300px;
+  border: 1px solid lightgrey;
+  background: #f1f1f1;
+  border-radius: 5px;
 }

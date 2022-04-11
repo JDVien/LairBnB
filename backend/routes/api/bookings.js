@@ -33,9 +33,9 @@ const bookingNotFoundError = (id) => {
 // };
 
 const validateBooking = [
-  check('image')
-    .notEmpty()
-    .isURL({ require_protocol: false, require_host: false }),
+  // check('image')
+  //   .notEmpty()
+  //   .isURL({ require_protocol: false, require_host: false }),
   check('startDate').not().isEmpty(),
   check('endDate').not().isEmpty(),
   check('totalCost').not().isEmpty(),
@@ -79,12 +79,12 @@ router.post(
     const userId = req.user.id;
     const booking = await db.Booking.build(req.body);
     await booking.save();
-    const image = await db.Image.create({
-      image: req.body.image,
-      bookingId: booking.id,
-    });
+    // const image = await db.Image.create({
+    //   image: req.body.image,
+    //   bookingId: booking.id,
+    // });
     console.log(booking)
-    return res.json( {booking} );
+    return res.json( booking );
   })
 );
 

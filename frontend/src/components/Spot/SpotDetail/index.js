@@ -26,17 +26,17 @@ const SpotDetail = () => {
   const booking = useSelector((state) => state.bookings[bookingId]);
   const reviews = useSelector((state) => Object.values(state.reviews));
   const history = useHistory();
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  }
+  // window.onbeforeunload = function () {
+  //   window.scrollTo(0, 0);
+  // }
 
   useEffect(() => {
     dispatch(getSpot(spotId));
   }, [dispatch, spotId]);
 
-  useEffect(() => {
-    dispatch(getBooking(bookingId));
-  }, [dispatch, bookingId]);
+  // useEffect(() => {
+  //   dispatch(getBooking(bookingId));
+  // }, [dispatch, bookingId]);
 
   const handleDelete = (spotId) => {
     dispatch(deleteSpot(spotId));
@@ -45,14 +45,14 @@ const SpotDetail = () => {
     // window.location.reload();
   };
 
-  // reviews = reviews.
+
 
   if (!spot) return null;
   let content = (
     <div className="spot-detail-lists">
       <div className="spot-detail-info-top">
       <i id='medal_icon_superhost 'className="fa-solid fa-medal">superhost</i>
-      <h2>{spot?.name}</h2>
+      <h2>{spot?.name} ${spot?.price} / night</h2>
       <p>{spot?.city}, {spot?.state}, {spot?.country}</p>
       <p></p>
       <div className="spot-details-body">
@@ -117,9 +117,10 @@ const SpotDetail = () => {
               <p>says: {review?.review}</p>
               {sessionUser?.id === review?.userId ? (
                 <div>
-                  <button
+                  <button className='review_delete_bttn'
                     onClick={async () => {
                       await dispatch(removeReview(review.id));
+                      window.location.reload();
                     }}
                   >
                     {" "}
@@ -148,8 +149,6 @@ const SpotDetail = () => {
       <div className="spot_detail">
         {content}
         {sessionUser && sessionUser.id !== spot.userId && (
-
-
           <div className="book_date">
             <div className="book_date_search">
             <div className='guests_div'>

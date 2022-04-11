@@ -20,9 +20,9 @@ const BookingDetail = () => {
 
   const history = useHistory();
   // const spots = { id, name, description, city, state, country, price, userId }
-  useEffect(() => {
-    dispatch(getBooking(spotId));
-  }, [dispatch, spotId]);
+  // useEffect(() => {
+  //   dispatch(getBooking(spotId));
+  // }, [dispatch, spotId]);
 
   // const handleDelete = (spotId) => {
   //   dispatch(deleteBooking(bookingId));

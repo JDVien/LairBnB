@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../store/reviews';
 import { getSpot } from '../../store/spot';
+import './SpotReviewForm.css';
 
 const SpotReviewForm = ({ spot, user, hideModal }) => {
   const [review, setReview] = useState('');
@@ -42,13 +43,14 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
     setHasSubmitted(false);
     setValidationErrors([]);
     hideModal();
-    // history.push(`/${id}`);
+    console.log(submitReview)
+    // window.location.reload();
   };
 
   return (
     <div className='review_container'>
-      <form onSubmit={handleSubmit}>
-        <h1>Write a Review</h1>
+      <h1>Write a Review</h1>
+      <form className='review_form' onSubmit={handleSubmit}>
         <ul className='errors'>
           {validationErrors.map((error) => (
             <li key={error}>{error}</li>
@@ -56,8 +58,8 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
         </ul>
       <div className='review_body_form'>
         <div className='review_body_content'>
-          <label htmlFor='review_content'>Review</label>
-          <textarea
+          <label htmlFor='review_content'></label>
+          <textarea className='review_textbox'
             name='review'
             id='review'
             value={review}
@@ -79,9 +81,9 @@ const SpotReviewForm = ({ spot, user, hideModal }) => {
               <option value="5">5</option>
           </select>
         </div>
-        <div className='review_submit_bttn'>
-          <button type='submit' >
-            Submit Rasdsadasdeview
+        <div >
+          <button className='review_submit_bttn'type='submit'  >
+            Submit Review
           </button>
         </div>
       </div>

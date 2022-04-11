@@ -9,10 +9,12 @@ import "./Spot.css";
 
 const Spots = () => {
   const dispatch = useDispatch();
-  const spots = useSelector((state) => Object.values(state.spots));
-  window.onbeforunload = function () {
-    window.scrollTo(0, 0);
-  }
+
+  const spots = useSelector((state) => state.spots);
+  const spotsArr = Object.values(spots);
+  // window.onbeforunload = function () {
+  //   window.scrollTo(0, 0);
+  // }
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
@@ -31,15 +33,15 @@ const Spots = () => {
                 <button variant="outlined">More filters</button>
         </div>
       <div className="spots_card_body">
-        {spots?.map((spot) => {
+        {spotsArr?.map((spot) => {
           return (
             <div className="spot" key={spot?.id}>
             <div className="spot-image">
             <NavLink className="spot-image" to={`/${spot?.id}`}>
               <SpotCard
                 src={spot?.Images[0]?.image}
-                className="spot"
-                key={spot?.id}
+                alt="spot"
+                key={spot?.Images[0]?.id}
                 name={spot?.name}
                 city={spot?.city}
                 state={spot?.state}

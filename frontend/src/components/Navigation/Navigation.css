@@ -124,3 +124,27 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.logout_bttn {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  text-decoration: none;
+  color: rgb(209, 78, 78);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.drop-down-menu-body {
+  min-height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
+  padding-bottom: 50px;
+  opacity: 95%;
+}
+
+.profile-dropdown > li {
+  border: 2px solid rgba(211, 211, 211, 0.692);
+  padding: 10px;
+}

@@ -20,6 +20,5 @@ function BookingFormModal({ spot, user, booking}) {
     </>
   );
 }
-// somehow get booking.isBooked passed into here to tag booked spots, preventing
-// it to be booked again by the same user.
+
 export default BookingFormModal;

@@ -47,7 +47,7 @@ export const getAllSpots = () => async (dispatch) => {
 };
 
 export const getSpot = (id) => async (dispatch) => {
-  const response = await fetch(`/api/spots/${id}`);
+  const response = await csrfFetch(`/api/spots/${id}`);
 
     const data = await response.json();
     dispatch(getOneSpot(data))
@@ -72,15 +72,15 @@ export const addSpot = (spot) => async (dispatch) => {
 export const editSpot = (payload) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${payload.id}/edit`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
     body: JSON.stringify(payload),
   });
   if (response.ok) {
     const data = await response.json();
-    const spot = data.spot
-    dispatch(updateSpot(spot));
+    // const spot = data.spot
+    dispatch(updateSpot(data));
   }
 }
 
