@@ -46,7 +46,7 @@ function SignupFormPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Email'
-          required
+
         />
       </label>
       <label className='signup_item'>
@@ -56,27 +56,27 @@ function SignupFormPage() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder='Username'
-          required
+
         />
         </label >
         <label className='signup_item'>
           Password
           <input
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder='Password'
-            required
+
           />
           </label>
           <label className='signup_item'>
             Confirm Password
             <input
-              type="text"
+              type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder='Confirm Password'
-              required
+
             />
             </label>
             <button className='signup_bttn' type="submit">Sign Up</button>

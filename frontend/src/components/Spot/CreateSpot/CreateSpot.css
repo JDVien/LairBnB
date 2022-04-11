@@ -6,7 +6,8 @@
 
 .add_spot_window {
   width: 1200px;
-  height: 800px;
+  min-height: 1500px;
+  height: 1500px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -14,7 +15,7 @@
   padding-bottom: 50px;
   margin-top: 50px;
   opacity: 100%;
-  font-size: x-large;
+  font-size: large;
 
 }
 

@@ -1,5 +1,4 @@
-/* .grid.grid-cols-1 {
-  display: grid;
-  grid-template-columns:  grid-cols-4;
-  gap: 100px;
-} */
+.name_git_link > a  {
+  padding-top: 10px;
+  opacity: 90%;;
+}

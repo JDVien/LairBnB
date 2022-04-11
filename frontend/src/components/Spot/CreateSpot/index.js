@@ -101,7 +101,7 @@ const CreateSpot = () => {
           <h3>Host a Spot!</h3>
           <form onSubmit={handleSubmit} className="add-spot-container">
             {hasSubmitted && (
-              <ul classname="errors">
+              <ul className="errors">
                 {validationErrors.map((error) => (
                   <li key={error}>{error}</li>
                 ))}
@@ -115,78 +115,75 @@ const CreateSpot = () => {
                 onChange={(e) => setName(e.target.value)}
               />
 
-                <input
-                  type="number"
-                  value={price}
-                  placeholder="Price Per Night"
-                  onChange={(e) => setPrice(e.target.value)}
-                />
+              <input
+                type="number"
+                value={price}
+                placeholder="Price Per Night"
+                onChange={(e) => setPrice(e.target.value)}
+              />
 
-                <label htmlFor="spotType">Type</label>
-                <select
-                  name="spotType"
-                  id="spotType"
-                  value={spotType}
-                  placeholder=<i className="fa-regular fa-house-building"></i>
-                  onChange={(e) => setSpotType(e.target.value)}
-                >
-                  {" "}
-                  <option value="Full Home">Full Home</option>
-                  <option value="Private Room">Private Room</option>
-                  <option value="Apartment/Loft">Apartment/Loft</option>
-                  <option value="Basement">Basement</option>
-                  <option value="Dungeon">Dungeon</option>
-                  <option value="Remote Lodging">Remote Lodging</option>
-                  <option value="Underground Lair">Underground Lair</option>
-                  <option value="Secret Base">Secret Base</option>
-                  <option value="Cavernous Domain">Cavernous Domain</option>
-                  <option value="Mansion">Mansion</option>
-                </select>
+              <label htmlFor="spotType">Type</label>
+              <select
+                name="spotType"
+                id="spotType"
+                value={spotType}
+                placeholder=<i className="fa-regular fa-house-building"></i>
+                onChange={(e) => setSpotType(e.target.value)}
+              >
+                {" "}
+                <option value="Full Home">Full Home</option>
+                <option value="Private Room">Private Room</option>
+                <option value="Apartment/Loft">Apartment/Loft</option>
+                <option value="Basement">Basement</option>
+                <option value="Dungeon">Dungeon</option>
+                <option value="Remote Lodging">Remote Lodging</option>
+                <option value="Underground Lair">Underground Lair</option>
+                <option value="Secret Base">Secret Base</option>
+                <option value="Cavernous Domain">Cavernous Domain</option>
+                <option value="Mansion">Mansion</option>
+              </select>
             </div>
             <h3>Description & Amenities</h3>
             <div className="textboxes_div">
-
               <div id="description_div">
                 <textarea
                   className="create_textbox"
                   value={description}
                   placeholder="Tell us more about your spot!"
                   onChange={(e) => setDescription(e.target.value)}
-                >
-                </textarea>
-                </div>
-                <div className='amenities_div'>
+                ></textarea>
+              </div>
+              <div className="amenities_div">
                 <textarea
                   className="create_textbox"
                   value={amenities}
                   // placeholder='description'
                   onChange={(e) => setAmenities(e.target.value)}
                 ></textarea>
-                </div>
-                </div>
-
-                <div className='location_container'>
-                <input
-                  type="text"
-                  value={city}
-                  placeholder="City"
-                  onChange={(e) => setCity(e.target.value)}
-                />
-                <input
-                  type="text"
-                  value={state}
-                  placeholder="State"
-                  onChange={(e) => setState(e.target.value)}
-                />
-
-                <input
-                  type="text"
-                  value={country}
-                  placeholder={"Country"}
-                  onChange={(e) => setCountry(e.target.value)}
-                />
               </div>
+            </div>
 
+            <div className="location_container">
+              <input
+                type="text"
+                value={city}
+                placeholder="City"
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <input
+                type="text"
+                value={state}
+                placeholder="State"
+                onChange={(e) => setState(e.target.value)}
+              />
+
+              <input
+                type="text"
+                value={country}
+                placeholder={"Country"}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
 
             <i in="house_icon" className="fa-regular fa-house-building"></i>
             <div id="img_div">
@@ -205,7 +202,6 @@ const CreateSpot = () => {
           </form>
         </div>
       </div>
-
     </>
   );
 };
