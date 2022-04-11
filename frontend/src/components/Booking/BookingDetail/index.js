@@ -19,7 +19,7 @@ const BookingDetail = () => {
   const booking = useSelector((state) => state.bookings[bookingId]);
 
   const history = useHistory();
-  // const spots = { id, name, address, city, state, country, price, userId }
+  // const spots = { id, name, description, city, state, country, price, userId }
   useEffect(() => {
     dispatch(getBooking(spotId));
   }, [dispatch, spotId]);
@@ -55,7 +55,7 @@ const BookingDetail = () => {
         <h2>{spot?.name}</h2>
         <ul>
           <li>
-            <b>address</b> {spot?.address}
+            <b>description</b> {spot?.description}
           </li>
           <li>
             <b>City</b> {spot?.city}

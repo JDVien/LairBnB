@@ -1,32 +1,101 @@
-.spot_card {
+.spot {
   margin: 10px;
   border: 0px solid rgb(255, 255, 255);
   border-radius: 10px;
   overflow: hidden;
   transition:  transform 100ms ease-in;
   cursor: pointer;
-  max-width: 350px;
+  max-width: 1500px;
+  max-height: 1000px;
+  width: 1100px;
 
+}
+.spot_card {
+  /* width: 1000px;
+  padding: 10px;
+  margin-left: 10px; */
+  display: flex;
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.692);
+  color: darkslategray;
 }
 
 .spot_card:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
+  opacity: 0.7;
+  border-bottom: 2px solid rgba(194, 91, 91, 0.692);
+  /* box-shadow: 0px 6px 18px -9px rgba(2, 2, 2, 0.75); */
+}
+
+.spot_card_image {
+  object-fit:cover;
+  overflow: hidden;
+  max-height: 250px;
+  min-height: 250px;
+  max-width: 450px;
+  min-width: 450px;
+  border-radius: 15px;
   box-shadow: 0px 6px 18px -9px rgba(2, 2, 2, 0.75);
+
 }
 
-.spot_card > img {
-  object-fit: fill;
-  min-width: 300px;
-  min-height: 200px;
-  width: 100%;
+.card_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
 }
-
 .card_content > h2 {
   color: black;
+
 }
 
 .card {
   background-color: white;
   height: 375px;
 
+}
+
+.star_icon {
+  display: flex;
+  align-items: center;
+
+}
+
+#rating_star {
+  color: red;
+
+}
+
+#heart_fave {
+  color: black;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.card_info_top {
+  width: 40vw;
+}
+.card_info_top > h3 {
+  font-weight:900;
+  margin-top: 10px;
+  color: rgb(214, 47, 47);
+}
+
+.card_info_top > p {
+  margin-top: 10px;
+  font-size: 13px;
+  color: gray;
+}
+
+.card_info_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_price > p {
+    text-align: right;
 }

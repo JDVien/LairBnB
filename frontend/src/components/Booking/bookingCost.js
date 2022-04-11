@@ -98,25 +98,24 @@ const BookingCost = ({ spot, booking, hideModal }) => {
   console.log(isBooked, '----------------------------------')
   return (
     <div className="bookingCont">
-      <form onSubmit={handleSubmit}>
-        <h2>Book Here!</h2>
+      <form className='book_form' onSubmit={handleSubmit}>
         <ul className="errors">
           {validationErrors.map((error) => (
             <li key={error}>{error}</li>
           ))}
         </ul>
-        <div>
-          <label htmlFor="startDate">Start Date</label>
+        <div className='checkin_out_inputs'>
+
+          <label htmlFor="startDate"></label>
           <input
             type="date"
             name="startDate"
             id="startDate"
+            placeholder='in'
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="endDate">End Date</label>
+          <label htmlFor="endDate"></label>
           <input
             type="date"
             name="endDate"
@@ -124,10 +123,11 @@ const BookingCost = ({ spot, booking, hideModal }) => {
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
           />
+
         </div>
-        <button type="submit">Book Now</button>
-      </form>
       <h2>Total Price$ {totalCost}</h2>
+        <button className='detail_book_button' type="submit">Book Now</button>
+      </form>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from 'react-router-dom'
 import Card from "../Card/Card";
+import Footer from '../Footer/Footer'
 import Bookings from '../Booking/Bookings/Bookings'
 import { NavLink } from 'react-router-dom';
 // import background from "./../../assets/images/curve.png";
@@ -80,6 +81,9 @@ function HomePage() {
             </div>
             </div>
         </section>
+      </div>
+      <div className='footer_block'>
+        <Footer />
       </div>
     </>
   );

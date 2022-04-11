@@ -1,23 +1,39 @@
-.spots {
+.spotsPage {
   background-color: white;
-  overflow-x: hidden;
+  margin-top: 30px;
+  min-height: 100%;
+  overflow:auto;
 }
 
-.spots_card_body {
+.spotsPage_info {
   background-color: white;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 100px;
-  max-width: 1500px;
+  padding: 20px;
 }
 
-/* .home_card_body {
-  background-color: white;
-  background-size: cover;
-  width: 100%;
-  display: inline-flex;
-  justify-content: space-evenly;
-  overflow-x: hidden;
 
-} */
+.spotsPage_info > p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.spotsPage_info > h1 {
+  margin-bottom: 30px;
+  color: black;
+}
+
+.spotsPage_info > button {
+  border-radius: 30px;
+  text-transform: inherit;
+  margin: 5px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: white;
+  /* border: 2px solid rgba(211, 211, 211, 0.671); */
+  border: 2px solid  rgba(214, 47, 47, 0.568);;
+  cursor: pointer;
+}
+
+.spotsPage_info > button:hover {
+  border: 2px solid rgba(0, 0, 0, 0.671);
+}

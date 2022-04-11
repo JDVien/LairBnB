@@ -40,8 +40,9 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
     setRating('');
     setHasSubmitted(false);
     setValidationErrors([]);
+    console.log(updatedReview)
     hideModal();
-    window.location.reload();
+    // window.location.reload();
     // history.push(`/${thisReview.id}`);
 
   };

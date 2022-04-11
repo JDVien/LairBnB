@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      address: {
+      description: {
         allowNull: false,
-        type: DataTypes.STRING(255),
+        type: DataTypes.TEXT,
       },
       city: {
         allowNull: false,
@@ -33,6 +33,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      amenities: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      spotType: {
+        allowNull: false,
+        type: DataTypes.STRING(50)
+      }
     },
     {}
   );

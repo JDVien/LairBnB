@@ -71,7 +71,7 @@ router.put(
     if (updatedReview) {
       // updatedReview.image = req.body.image || updatedReview.image;
       updatedReview.review = req.body.review || updatedReview.revieww;
-      updatedReview.address = req.body.rating || updatedReview.rating;
+      updatedReview.rating = req.body.rating || updatedReview.rating;
 
       await updatedReview.save();
       res.json({ updatedReview });

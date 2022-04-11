@@ -1,49 +1,63 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route } from 'react-router-dom';
-import { getAllSpots } from '../../../store/spot';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, Route } from "react-router-dom";
+import { getAllSpots } from "../../../store/spot";
 // import SpotDetail from '../SpotDetail';
-import SpotCard from '../../SpotCard/SpotCard';
-import SpotDetail from '../SpotDetail/'
-import './Spot.css';
+import SpotCard from "../../SpotCard/SpotCard";
+import SpotDetail from "../SpotDetail/";
+import "./Spot.css";
 
 const Spots = () => {
   const dispatch = useDispatch();
-  // const { spotId } = useParams();
   const spots = useSelector((state) => Object.values(state.spots));
-
-    useEffect(() => {
+  window.onbeforunload = function () {
+    window.scrollTo(0, 0);
+  }
+  useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
   if (!spots) return null;
 
   return (
-    <main>
-      <div className='spots_card_body'>
-        {spots?.map(spot => {
-          return (
-          <NavLink to={`/${spot?.id}`} >
-             <SpotCard src='https://media.wired.com/photos/5933b12d714b881cb296bd67/master/w_2560%2Cc_limit/colombo2_f.jpg'
-                 className="spot" key={spot?.id}
-                 name={spot?.name}
-                 city={spot?.city}
-                 state={spot?.state}
-                price={spot?.price}
-              ></SpotCard>
-          </NavLink>
-          )
-        })}
+    <div className='spotsPage'>
+      <div className='spotsPage_info'>
+        <p>{spots.length} stays · April 11 to 20 · 2 guest </p>
+        <h1>Stays nearby</h1>
+                <button variant="outlined">Cancellation Flexibility</button>
+                <button variant="outlined">Type of place</button>
+                <button variant="outlined">Price</button>
+                <button variant="outlined">Rooms and beds</button>
+                <button variant="outlined">More filters</button>
         </div>
-          <Route path='/spots/:spotId'>
-            <SpotDetail
-              spots={spots}
-            />
-          </Route>
-        </main>
-  )
-
-
-}
+      <div className="spots_card_body">
+        {spots?.map((spot) => {
+          return (
+            <div className="spot" key={spot?.id}>
+            <div className="spot-image">
+            <NavLink className="spot-image" to={`/${spot?.id}`}>
+              <SpotCard
+                src={spot?.Images[0]?.image}
+                className="spot"
+                key={spot?.id}
+                name={spot?.name}
+                city={spot?.city}
+                state={spot?.state}
+                price={spot?.price}
+                amenities={spot?.amenities}
+                spotType={spot?.spotType}
+              ></SpotCard>
+            </NavLink>
+            </div>
+            </div>
+          );
+        })}
+      </div>
+      <Route path="/spots/:spotId">
+        <SpotDetail spots={spots} />
+      </Route>
+    </div>
+  );
+};
 
 export default Spots;

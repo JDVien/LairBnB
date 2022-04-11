@@ -8,13 +8,15 @@ const CreateSpot = () => {
   // const [image, setImage] = useState('');
   const sessionUser = useSelector((state) => state.session.user)
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
+  const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [price, setPrice] = useState('');
-  // const [image, setImage] = useState('');
-  // const [errors, setErrors] = useState([]);
+  const [image, setImage] = useState([]);
+  const [amenities, setAmenities] = useState('1 guest · 1 bedroom · 1 bed · 1 bathrooms · Wifi · Kitchen · Free parking · Washing Machine');
+  const [spotType, setSpotType] = useState('');
+  const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [validationErrors, setValidationErrors] = useState([])
   const history = useHistory();
@@ -26,8 +28,8 @@ const CreateSpot = () => {
     if (name.length < 1) {
       errors.push("Name cannot be left empty")
     }
-    if (address.length < 1) {
-      errors.push("Address cannot be left empty")
+    if (description.length < 1) {
+      errors.push("description cannot be left empty")
     }
     if (city.length < 1) {
       errors.push("City cannot be left empty")
@@ -41,9 +43,15 @@ const CreateSpot = () => {
     if (price.length < 1) {
       errors.push("Price cannot be left empty")
     }
+    if (amenities.length < 1) {
+      errors.push("Amenities cannot be left empty")
+    }
+    if (spotType.length < 1) {
+      errors.push("Spot type cannot be left empty")
+    }
     setValidationErrors(errors);
 
-  }, [name, address, city, state, country, price])
+  }, [name, description, city, state, country, price, amenities, spotType])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,20 +59,26 @@ const CreateSpot = () => {
 
     const spot = {
       name,
-      address,
+      description,
       city,
       state,
       country,
       price,
+      image,
+      amenities,
+      spotType,
       userId: sessionUser.id,
     };
     let newSpot = await dispatch(addSpot(spot));
     setName("");
-    setAddress("");
+    setDescription("");
     setPrice("");
     setCity("");
+    setImage("")
     setState("");
     setCountry(false);
+    setAmenities('1 guest · 1 bedroom · 1 bed · 1 bathrooms · Wifi · Kitchen · Free parking · Washing Machine');
+    setSpotType('')
     setValidationErrors([]);
     setHasSubmitted(false);
     if (newSpot) {
@@ -73,8 +87,13 @@ const CreateSpot = () => {
     }
   };
 
+  const upload = (e) => {
+    setImage(e.target.value);
+  };
+
   return (
     <>
+
     <div className='add-spot'>
       <div className='add_spot_window'>
       <h3>Host a Spot!</h3>
@@ -86,11 +105,6 @@ const CreateSpot = () => {
           ))}
           </ul>
         }
-        {/* <input
-          onChange={(e) => setImage(e.target.value)}
-          value={image}
-          placeholder='Image Url'
-        /> */}
         <div id='name_div'>
         <input
           type="text"
@@ -99,13 +113,12 @@ const CreateSpot = () => {
           onChange={(e) => setName(e.target.value)}
         />
         </div>
-        <div id='location_div'>
-          <input
-          type="text"
-          value={address}
-          placeholder='Address'
-          onChange={(e) => setAddress(e.target.value)}
-        />
+        <div id='description_div'>
+          <textarea
+          value={description}
+          placeholder='description'
+          onChange={(e) => setDescription(e.target.value)}
+        >Description</textarea>
 
         <input
           type="text"
@@ -119,10 +132,11 @@ const CreateSpot = () => {
           placeholder='State'
           onChange={(e) => setState(e.target.value)}
         />
+
         <input
           type="text"
           value={country}
-          placeholder='Country'
+          placeholder={'Country'}
           onChange={(e) => setCountry(e.target.value)}
         />
         </div>
@@ -133,7 +147,41 @@ const CreateSpot = () => {
           placeholder='Price Per Night'
           onChange={(e) => setPrice(e.target.value)}
         />
+        <textarea
+          value={amenities}
+          // placeholder='description'
+          onChange={(e) => setAmenities(e.target.value)}
+        ></textarea>
+          <div className='review_body_rating'>
+          <label htmlFor='spotType'>Type</label>
+          <select
+            name='spotType'
+            id='spotType'
+            value={spotType}
+            placeholder=<i className="fa-regular fa-house-building"></i>
+            onChange={(e) => setSpotType(e.target.value)}
+          >   <option value="Full Home">Full Home</option>
+              <option value="Private Room">Private Room</option>
+              <option value="Apartment/Loft">Apartment/Loft</option>
+              <option value="Basement">Basement</option>
+              <option value="Dungeon">Dungeon</option>
+              <option value="Remote Lodging">Remote Lodging</option>
+              <option value="Underground Lair">Underground Lair</option>
+              <option value="Secret Base">Secret Base</option>
+              <option value="Cavernous Domain">Cavernous Domain</option>
+              <option value="Mansion">Mansion</option>
+          </select>
         </div>
+        </div>
+        <i in='house_icon' className="fa-regular fa-house-building"></i>
+        <div id='img_div'>
+        <input
+            type='text'
+            value={image}
+            placeholder='Image'
+            onChange={upload}
+        />
+                    </div>
         <div id='button_div'>
         <button className='spot-submit-button' type='submit'>
           Host a Spot!

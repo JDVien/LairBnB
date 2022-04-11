@@ -13,9 +13,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      address: {
+      description: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.TEXT
       },
       city: {
         allowNull: false,
@@ -37,7 +37,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-
+      amenities: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      spotType: {
+        allowNull: false,
+        type: Sequelize.STRING(50)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

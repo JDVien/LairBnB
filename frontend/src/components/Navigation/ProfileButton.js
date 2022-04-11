@@ -36,6 +36,7 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
+        <div className='drop-down-menu-body'>
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
@@ -45,6 +46,7 @@ function ProfileButton({ user }) {
           <li><NavLink className='nav-item' to="/bookings"></NavLink>
           </li>
         </ul>
+        </div>
       )}
     </>
   );

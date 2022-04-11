@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/JDVien/LairBnB#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "date-fns": "^2.28.0",
     "google-maps-react": "^2.0.6",
     "react": "^16.14.0",
     "react-date-range": "^1.4.0",
-    "react-router": "^6.3.0"
+    "react-router": "^6.3.0",
+    "redux-form": "^8.3.8"
   }
 }

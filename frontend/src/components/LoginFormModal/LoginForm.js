@@ -52,6 +52,19 @@ function LoginForm() {
       </label>
       <button className='login_bttn' type="submit">Continue</button>
     </form>
+    <button
+        className={`button btn-gradient login_bttn`}
+        onClick={() => {
+          dispatch(
+            sessionActions.login({
+              credential: "demo@user.io",
+              password: "password",
+            })
+          );
+        }}
+      >
+        Demo Login
+      </button>
     </div>
     </>
   );

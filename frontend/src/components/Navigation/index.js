@@ -13,16 +13,19 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showSearch, setShowSearch] = useState(false);
-  
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
+      <span className='profile_bttn nav-item'>
+        <ProfileButton user={sessionUser} />
+        </span>
+        <i className="fa-solid fa-globe"></i>
         <NavLink className="nav-item" to="/spots/create">
           {" "}
-          Create a Spot
+          Become a host
         </NavLink>
-        <ProfileButton user={sessionUser} />
       </>
     );
   } else {
@@ -41,6 +44,8 @@ function Navigation({ isLoaded }) {
 
   return (
     <nav className="top_nav_div">
+
+      {isLoaded && sessionLinks}
       <NavLink exact to="/" className="nav-item">
         Home
       </NavLink>
@@ -53,7 +58,6 @@ function Navigation({ isLoaded }) {
       <Bookings>Bookings</Bookings>
       </NavLink> */}
 
-      {isLoaded && sessionLinks}
       <div className="home_nav_searchbar_container">
         <form className="search_form">
           <input className="searchbar" type="search" />

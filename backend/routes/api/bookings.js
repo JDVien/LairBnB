@@ -33,9 +33,9 @@ const bookingNotFoundError = (id) => {
 // };
 
 const validateBooking = [
-  // check('image')
-  //   .notEmpty()
-  //   .isURL({ require_protocol: false, require_host: false }),
+  check('image')
+    .notEmpty()
+    .isURL({ require_protocol: false, require_host: false }),
   check('startDate').not().isEmpty(),
   check('endDate').not().isEmpty(),
   check('totalCost').not().isEmpty(),
@@ -79,10 +79,10 @@ router.post(
     const userId = req.user.id;
     const booking = await db.Booking.build(req.body);
     await booking.save();
-    // const image = await db.Image.create({
-    //   image: req.body.image,
-    //   bookingId: booking.id,
-    // });
+    const image = await db.Image.create({
+      image: req.body.image,
+      bookingId: booking.id,
+    });
     console.log(booking)
     return res.json( {booking} );
   })
@@ -95,18 +95,18 @@ router.put(
     const booking = await Booking.findByPk(req.params.id);
 
     if (booking) {
-      // booking.image = req.body.image || booking.image;
-      // booking.name = req.body.name || booking.name;
-      // booking.address = req.body.address || booking.address;
-      // booking.city = req.body.city || booking.city;
-      // booking.state = req.body.state || booking.state;
-      // booking.country = req.body.country || booking.country;
-      // booking.price = req.body.price || booking.price;
+      booking.image = req.body.image || booking.image;
+      booking.name = req.body.name || booking.name;
+      booking.description = req.body.description || booking.description;
+      booking.city = req.body.city || booking.city;
+      booking.state = req.body.state || booking.state;
+      booking.country = req.body.country || booking.country;
+      booking.price = req.body.price || booking.price;
 
       await booking.save();
       res.json({ booking });
-    // } else {
-    //   next(bookingNotFoundError(req.params.id));
+    } else {
+      next(bookingNotFoundError(req.params.id));
     }
   })
 );
@@ -116,6 +116,7 @@ router.delete('/:id(\\d+)', async (req, res, next) => {
   if (booking) {
     await booking.destroy();
     res.status(204).end();
+    res.json(booking)
   } else {
     next(bookingNotFoundError(req.params.id));
   }

@@ -6,7 +6,8 @@ body {
 .top_nav_div {
   background-color: black;
   height: 3em;
-  position: fixed;
+  position: sticky;
+  z-index: 50;
   top: 0;
   right: 0;
   left: 0;
@@ -29,11 +30,23 @@ body {
 }
 
 .nav-item-profile {
+  border-radius: 999px;
+}
+
+.nav-item-profile {
   padding-left: 15px;
   padding-right: 15px;
   margin: 10px;
   text-decoration: none;
   color: rgb(209, 78, 78);
+}
+
+.drop-down-menu-body {
+  position: absolute;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 60;
+  box-shadow:inset lightblue;
 }
 
 .nav-item:hover {
@@ -81,11 +94,11 @@ body {
 }
 
 .lairbnb_logo_black_orange_home {
-  position: relative;
+  position: sticky;
   max-width: 200px;
   padding-left: 10px;
-  display: flex;
-  left: 200px;
+  /* display: flex; */
+  /* left: 200px; */
 }
 /*
 .login_bttn {

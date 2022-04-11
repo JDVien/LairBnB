@@ -33,11 +33,11 @@ const spotNotFoundError = (id) => {
 // };
 
 const validateSpot = [
-  // check('image')
-  //   .notEmpty()
-  //   .isURL({ require_protocol: false, require_host: false }),
+  check('image')
+    .notEmpty()
+    .isURL({ require_protocol: false, require_host: false }),
   check('name').not().isEmpty(),
-  check('address').not().isEmpty(),
+  check('description').not().isEmpty(),
   check('city').not().isEmpty(),
   check('state').not().isEmpty(),
   check('country').not().isEmpty(),
@@ -47,7 +47,9 @@ const validateSpot = [
 router.get(
   '/',
   async (req, res) => {
-    const spots = await Spot.findAll();
+    const spots = await Spot.findAll({
+      include: [{ model: db.Image }]
+    });
     return res.json( spots );
   })
 
@@ -59,6 +61,7 @@ router.get(
       include: [db.Image, db.Review, db.Booking],
     });
     if (spot) {
+      console.log(spot)
       return res.json( spot );
     } else {
       next(spotNotFoundError(req.params.id));
@@ -71,16 +74,23 @@ router.post(
   validateSpot,
   requireAuth,
   asyncHandler(async (req, res) => {
-    // const { image, name, price } = req.body;
+    // const { image, name, price, description, city, state } = req.body;
     const userId = req.user.id;
     const spot = await db.Spot.build(req.body);
     await spot.save();
-    // const image = await db.Image.create({
-    //   image: req.body.image,
-    //   spotId: spot.id,
-    // });
-    console.log(spot)
-    return res.json({ spot });
+    const image = await db.Image.create({
+      image: req.body.image,
+      spotId: spot.id,
+    });
+    const oneSpot = await db.Spot.findByPk(spot.id, {
+      include: [
+        {
+          model: db.Image,
+        },
+      ],
+    });
+    console.log(oneSpot)
+    return res.json({ oneSpot });
   })
 );
 
@@ -91,9 +101,9 @@ router.put(
     const spot = await Spot.findByPk(req.params.id);
 
     if (spot) {
-      // spot.image = req.body.image || spot.image;
+      spot.image = req.body.image || spot.image;
       spot.name = req.body.name || spot.name;
-      spot.address = req.body.address || spot.address;
+      spot.description = req.body.description || spot.description;
       spot.city = req.body.city || spot.city;
       spot.state = req.body.state || spot.state;
       spot.country = req.body.country || spot.country;
@@ -101,8 +111,8 @@ router.put(
 
       await spot.save();
       res.json({ spot });
-    // } else {
-    //   next(spotNotFoundError(req.params.id));
+    } else {
+      next(spotNotFoundError(req.params.id));
     }
   })
 );
@@ -110,8 +120,9 @@ router.put(
 router.delete('/:id(\\d+)', async (req, res, next) => {
   const spot = await Spot.findByPk(req.params.id);
   if (spot) {
-    await spot.destroy();
+    await spot.destroy({options: {cascade:true}});
     res.status(204).end();
+
   } else {
     next(spotNotFoundError(req.params.id));
   }

@@ -16,3 +16,7 @@
   margin-right:  35%;
   padding: 10px;
 }
+
+.checkin_out_div {
+  display: inline-flex;
+}

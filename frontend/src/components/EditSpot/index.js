@@ -11,7 +11,7 @@ const EditForm = ({ spot, hideModal }) => {
   // const history = useHistory();
   // console.log('inSpot:', spot)
   const [name, setName] = useState(spot?.name);
-  const [address, setAddress] = useState(spot?.address);
+  const [description, setDescription] = useState(spot?.description);
   const [city, setCity] = useState(spot?.city);
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
@@ -27,8 +27,8 @@ const EditForm = ({ spot, hideModal }) => {
     if (name.length < 1) {
       errors.push("Name cannot be left empty")
     }
-    if (address.length < 1) {
-      errors.push("Address cannot be left empty")
+    if (description.length < 1) {
+      errors.push("Description cannot be left empty")
     }
     if (city.length < 1) {
       errors.push("City cannot be left empty")
@@ -47,7 +47,7 @@ const EditForm = ({ spot, hideModal }) => {
     // }
     setValidationErrors(errors);
 
-  }, [name, address, city, state, country, price])
+  }, [name, description, city, state, country, price])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const EditForm = ({ spot, hideModal }) => {
     const newSpot = {
       id: spot.id,
       name,
-      address,
+      description,
       city,
       state,
       country,
@@ -67,7 +67,7 @@ const EditForm = ({ spot, hideModal }) => {
       console.log(spot.id);
       await dispatch(editSpot(newSpot));
       setName("");
-      setAddress("");
+      setDescription("");
       setPrice("");
       setCity("");
       setState("");
@@ -98,11 +98,11 @@ const EditForm = ({ spot, hideModal }) => {
         />
       </label>
       <label>
-        Address
+        Description
         <input
           type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
       </label>
       <label>

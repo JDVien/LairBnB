@@ -63,6 +63,7 @@ export const editReview = review => async (dispatch) => {
     body: JSON.stringify(review),
   });
   const data = await response.json();
+  console.log(data)
   dispatch(updateReview(data));
   return response;
 };
