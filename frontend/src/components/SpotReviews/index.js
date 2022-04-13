@@ -26,9 +26,9 @@ const Reviews = () => {
 
   return (
     <div className='reviews_all_container'>
-       {/* <div className='create-review-modal'>
+       <div className='create-review-modal'>
         <SpotReviewModal review={reviews}/>
-      </div> */}
+      </div>
       {reviews?.map(review =>
         <div className='one-review-div' key={review?.id}>
           <div className='review-div'>
@@ -53,9 +53,7 @@ const Reviews = () => {
                 <div className='action-btt-review'>
                   <EditReviewFormModal spot={spot} review={review} user={{...sessionUser}} />
                 </div>
-                {/* <div className='action-btt-review'>
-                  <DeletereviewModal review={review} />
-                </div> */}
+
               </div>
             )
             }

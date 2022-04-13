@@ -9,7 +9,6 @@ function SpotCard({ src, name, city, state, price, amenities, spotType }) {
   return (
     <div className="spot_card">
       <div className="card_image_body">
-        {/* <img src={src} alt="" /> */}
         <div className="img_block">
           <img src={src} className="spot_card_image" alt="" />
           <i id="heart_fave" className="fa-regular fa-heart"></i>
@@ -36,8 +35,7 @@ function SpotCard({ src, name, city, state, price, amenities, spotType }) {
           <h2>${price} / night</h2>
           </div>
         </div>
-
-        {/* <h3>{rating}</h3> */}
+     {/* <h3>{rating}</h3> */}
       </div>
     </div>
   );

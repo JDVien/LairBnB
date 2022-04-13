@@ -12,9 +12,7 @@ const Spots = () => {
 
   const spots = useSelector((state) => state.spots);
   const spotsArr = Object.values(spots);
-  // window.onbeforunload = function () {
-  //   window.scrollTo(0, 0);
-  // }
+
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);

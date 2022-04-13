@@ -27,7 +27,7 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
     e.preventDefault();
     setHasSubmitted(true);
 
-    // console.log('---------qqqqqqqq------', updateReview.id)
+
     const newReview = {
       id: thisReview.id,
       review,
@@ -43,7 +43,7 @@ const EditReviewForm = ({ thisReview, spot, user, hideModal }) => {
     console.log(updatedReview)
     hideModal();
     window.location.reload();
-    // history.push(`/${thisReview.id}`);
+     history.push(`/${thisReview.id}`);
 
   };
 
