@@ -1,7 +1,7 @@
 // frontend/src/components/Navigation/index.js
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { NavLink, Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignupFormPage/SignUpFormModal";
@@ -11,8 +11,34 @@ import Search from '../Search'
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [showSearch, setShowSearch] = useState(false);
+  const [searchWord, setSearchWord] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
+  const spots = useSelector((state) => state.spots);
+  const spotsList = Object.values(spots).map((spot) => [
+    spot.name,
+    spot.city,
+    spot.state,
+    spot.price,
+    spot.image,
+    spot.spotType,
+    spot?.id,
+  ])
+
+  useEffect(() => {
+    setFilteredList(spotsList.filter((spot) =>
+      spot[0].toLowerCase().includes(searchWord.toLowerCase())
+    ))
+  }, [searchWord])
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (filteredList.length > 0) {
+      history.push(`/spots/${filteredList[0][2]}`)
+    }
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -59,8 +85,14 @@ function Navigation({ isLoaded }) {
       </NavLink> */}
 
       <div className="home_nav_searchbar_container">
-        <form className="search_form">
-          <input className="searchbar" type="search" />
+        <form className="search_form" onSubmit={(e) => handleSubmit(e)}>
+          <input
+            className="searchbar"
+            type="search"
+            value={searchWord}
+            placeholder="Search Spots!"
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
           <button className="search_logo_button_lairbnb">
             <img
               className="lairbnb_search_black_orange"
@@ -69,6 +101,36 @@ function Navigation({ isLoaded }) {
             />
           </button>
         </form>
+        {searchWord != "" && (
+          <div id='search-container'>
+            <div classname="searchresult-list">
+              {filteredList?.slice(0, 5).map((spot) => (
+                <div className="lbnb=div">
+                  <Link className="spot-link" to={`/${spot[6]}`}>
+                    <span
+                      className="spot-li"
+                      key={spot.id}
+                      value={spot.name}
+                    >
+                      <img
+                        src={spot[4]?.image}
+                        width="115"
+                        height="53.78"
+                        alt="spot img"
+                      />
+                      <div className="spot-separator">
+                        {spot[0]}
+                        <span className="spot-search-price">
+                          {spot[3]}
+                          </span>
+                        </div>
+                      </span>
+                    </Link>
+                  </div>
+              ))}
+            </div>
+          </div>
+        )}
         <img
           className="lairbnb_logo_black_orange_home"
           src={require("../../assets/images/text-1649000244645.png")}

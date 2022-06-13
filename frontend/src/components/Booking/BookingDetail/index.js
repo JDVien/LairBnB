@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { deleteBooking , getBooking } from '../../../store/bookings';
 // import EditFormModal from '../../EditSpot/EditFormModal';
-import EditBookingFormModal from '../../Booking/BookingDetail/EditBookingFormModal';
-
+// import EditBookingFormModal from '../../Booking/BookingDetail/EditBookingFormModal';
+import BookingCost from '../bookingCost'
 import './BookingDetail.css';
 
 const BookingDetail = () => {
@@ -84,12 +84,12 @@ const BookingDetail = () => {
       {bookingContent}
       {sessionUser && sessionUser.id !== spot.userId  && (
 
-        <EditBookingFormModal  user={{...sessionUser}} booking={booking} />
-        // <div className="book_date">
-        //   <div className="book_date_search">
-        //     <BookingCost user={{ ...sessionUser }} spot={spot} />
-        //   </div>
-        // </div>
+        // <EditBookingFormModal  user={{...sessionUser}} booking={booking} />
+        <div className="book_date">
+          <div className="book_date_search">
+            <BookingCost user={{ ...sessionUser }} spot={spot} />
+          </div>
+        </div>
       )}
       {/* {console.log(booking)} */}
     </div>
