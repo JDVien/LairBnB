@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignupFormPage/SignUpFormModal";
-import Bookings from './../Booking/Bookings/Bookings'
-import BookingFormModal from './../Booking/Bookings/BookingFormModal'
-import Search from '../Search'
+import Bookings from "./../Booking/Bookings/Bookings";
+import BookingFormModal from "./../Booking/Bookings/BookingFormModal";
+import { getAllSpots } from "../../store/spot";
+import Search from "../Search";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [showSearch, setShowSearch] = useState(false);
@@ -18,25 +20,31 @@ function Navigation({ isLoaded }) {
   const [filteredList, setFilteredList] = useState([]);
   const spots = useSelector((state) => state.spots);
   const spotsList = Object.values(spots).map((spot) => [
-    spot.name,
-    spot.city,
-    spot.state,
-    spot.price,
-    spot.image,
-    spot.spotType,
+    spot?.name,
+    spot?.city,
+    spot?.state,
+    spot?.price,
+    spot?.Images[0]?.image,
+    spot?.spotType,
     spot?.id,
-  ])
+  ]);
 
   useEffect(() => {
-    setFilteredList(spotsList.filter((spot) =>
-      spot[0].toLowerCase().includes(searchWord.toLowerCase())
-    ))
-  }, [searchWord])
+    dispatch(getAllSpots());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredList(
+      spotsList.filter((spot) =>
+        spot[0].toLowerCase().includes(searchWord.toLowerCase())
+      )
+    );
+  }, [searchWord]);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (filteredList.length > 0) {
-      history.push(`/spots/${filteredList[0][2]}`)
+      history.push(`/spots/${filteredList[0][2]}`);
     }
   }
 
@@ -44,8 +52,8 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-      <span className='profile_bttn nav-item'>
-        <ProfileButton user={sessionUser} />
+        <span className="profile_bttn nav-item">
+          <ProfileButton user={sessionUser} />
         </span>
         <i className="fa-solid fa-globe"></i>
         <NavLink className="nav-item" to="/spots/create">
@@ -70,7 +78,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <nav className="top_nav_div">
-
+      <div className="top_nav_bar">
       {isLoaded && sessionLinks}
       <NavLink exact to="/" className="nav-item">
         Home
@@ -90,7 +98,7 @@ function Navigation({ isLoaded }) {
             className="searchbar"
             type="search"
             value={searchWord}
-            placeholder="Search Spots!"
+            placeholder="Search nearby spots!"
             onChange={(e) => setSearchWord(e.target.value)}
           />
           <button className="search_logo_button_lairbnb">
@@ -100,54 +108,54 @@ function Navigation({ isLoaded }) {
               alt="lairbnb_logo"
             />
           </button>
+          <div className='logo_img_div'>
+            <img
+              className="lairbnb_logo_black_orange_home"
+              src={require("../../assets/images/text-1649000244645.png")}
+              alt="lairbnb_logo_home"
+            />
+            </div>
         </form>
         {searchWord != "" && (
-          <div id='search-container'>
-            <div classname="searchresult-list">
+          <div id="search-container">
+            <div className="searchresult-list">
               {filteredList?.slice(0, 5).map((spot) => (
                 <div className="lbnb=div">
-                  <Link className="spot-link" to={`/${spot[6]}`}>
-                    <span
-                      className="spot-li"
-                      key={spot.id}
-                      value={spot.name}
-                    >
+                  <a className="spot-link" href={`/${spot[6]}`}>
+                    <span className="spot-li" key={spot.id} value={spot.name}>
                       <img
-                        src={spot[4]?.image}
+                        src={spot[4]}
                         width="115"
                         height="53.78"
                         alt="spot img"
                       />
                       <div className="spot-separator">
                         {spot[0]}
-                        <span className="spot-search-price">
-                          {spot[3]}
-                          </span>
-                        </div>
-                      </span>
-                    </Link>
-                  </div>
+                        <span className="spot-search-price">${spot[3]} / night</span>
+                      </div>
+                    </span>
+                  </a>
+                </div>
               ))}
             </div>
+
           </div>
         )}
-        <img
-          className="lairbnb_logo_black_orange_home"
-          src={require("../../assets/images/text-1649000244645.png")}
-          alt="lairbnb_logo_home"
-        />
       </div>
 
-      <div className='banner'>
-        <div className='banner_search'>
+      {/* <div className="banner">
+        <div className="banner_search">
           {showSearch && <Search />}
-          <button onClick={() => setShowSearch(!showSearch)}
-          className='banner_search_button'
-            variant='outlined'>
-              {showSearch ? "Hide" : "Search Dates"}
+          <button
+            onClick={() => setShowSearch(!showSearch)}
+            className="banner_search_button"
+            variant="outlined"
+          >
+            {showSearch ? "Hide" : "Search Dates"}
           </button>
-          </div>
-          </div>
+        </div>
+      </div> */}
+      </div>
     </nav>
   );
 }
